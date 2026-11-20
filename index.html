@@ -1,0 +1,2233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Grand Bharat Highway | Kashmir to Kanyakumari</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Three.js for 3D Hero -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <style>
+    :root {
+      /* Palette: Base baby blue / turquoise tinted with Indian Flag hues */
+      --sky-light: #f0f9ff;
+      --turquoise-tint: #e0f2fe;
+      --turquoise-mid: #38bdf8;
+      --turquoise-dark: #0284c7;
+      
+      /* Subtle Tiranga shades */
+      --saffron-subtle: #fff4ea;
+      --saffron-accent: #f97316;
+      --saffron-glow: rgba(249, 115, 22, 0.15);
+      --white-pure: #ffffff;
+      --green-subtle: #f0fdf4;
+      --green-accent: #15803d;
+      --green-glow: rgba(21, 128, 61, 0.15);
+      --ashoka-navy: #0f172a;
+      --ashoka-blue: #1e3a8a;
+      
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --road-color: #334155;
+      --road-line: #facc15;
+      --border-soft: rgba(56, 189, 248, 0.28);
+      --shadow-sm: 0 4px 14px rgba(2, 132, 199, 0.08);
+      --shadow-lg: 0 16px 36px rgba(15, 23, 42, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: linear-gradient(180deg, #e0f7fa 0%, #f0f9ff 35%, #f5fbff 70%, #e0f2fe 100%);
+      color: #1e293b;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Top Tricolor Banner */
+    .top-tricolor-bar {
+      height: 5px;
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+      background: linear-gradient(90deg, #f97316 0%, #ffffff 50%, #16a34a 100%);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+
+    /* Header Nav */
+    header.site-header {
+      position: fixed;
+      top: 5px;
+      left: 0;
+      width: 100%;
+      z-index: 90;
+      backdrop-filter: blur(12px);
+      background: rgba(240, 249, 255, 0.88);
+      border-bottom: 1px solid var(--border-soft);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 2.5rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .chakra-badge {
+      width: 32px;
+      height: 32px;
+      border: 2px solid var(--ashoka-blue);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--ashoka-blue);
+      background: #ffffff;
+      font-size: 0.8rem;
+      box-shadow: 0 0 10px rgba(30, 58, 138, 0.2);
+    }
+
+    .brand-title {
+      font-family: 'Cinzel', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      letter-spacing: 0.5px;
+      color: var(--ashoka-navy);
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      color: var(--turquoise-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    nav.nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-pill {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #334155;
+      text-decoration: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      transition: all 0.2s;
+    }
+
+    .nav-pill:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--ashoka-blue);
+    }
+
+    .btn-cta {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 24px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.25);
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* HERO SECTION (Route 66 Style + 3D Canvas Limited to Here) */
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 92vh;
+      margin-top: 60px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 40%, rgba(224, 242, 254, 0.9) 0%, rgba(186, 230, 253, 0.95) 60%, #bae6fd 100%);
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: auto;
+    }
+
+    .hero-overlay-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 860px;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.82);
+      backdrop-filter: blur(16px);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-lg), 0 0 40px rgba(56, 189, 248, 0.25);
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(90deg, var(--saffron-subtle), var(--green-subtle));
+      border: 1px solid var(--border-soft);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--ashoka-blue);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-family: 'Cinzel', serif;
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--ashoka-navy);
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-title span.saffron-text {
+      color: #ea580c;
+    }
+    .hero-title span.green-text {
+      color: #15803d;
+    }
+    .hero-title span.blue-text {
+      color: var(--turquoise-dark);
+    }
+
+    .hero-desc {
+      font-size: 1.1rem;
+      color: #475569;
+      max-width: 680px;
+      margin: 0 auto 1.8rem auto;
+      font-weight: 500;
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+    .stat-val {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ashoka-blue);
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-tip {
+      font-size: 0.75rem;
+      color: #0284c7;
+      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+    }
+
+    /* MAIN HIGHWAY CONTAINER */
+    .highway-section {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem 1.5rem 8rem 1.5rem;
+    }
+
+    /* STRAIGHT NORTH TO SOUTH ROAD GRAPHIC */
+    .road-spine {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 48px;
+      background: var(--road-color);
+      border-radius: 24px;
+      box-shadow: 0 0 0 6px #cbd5e1, 0 10px 25px rgba(0,0,0,0.15);
+      z-index: 1;
+    }
+
+    /* Dashed Center Road Line */
+    .road-spine::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      background-image: linear-gradient(to bottom, var(--road-line) 60%, transparent 40%);
+      background-size: 4px 28px;
+    }
+
+    /* Milepost Badges on the Road */
+    .road-checkpoint {
+      position: absolute;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      border: 3px solid var(--turquoise-dark);
+      display: grid;
+      place-items: center;
+      z-index: 3;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: var(--ashoka-navy);
+    }
+
+    /* STATE STOP SECTION (Route 66 Episodic Chapter Format) */
+    .state-stop {
+      position: relative;
+      margin-bottom: 6rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+      z-index: 2;
+    }
+
+    /* Alternate left and right */
+    .state-stop.odd .content-side {
+      order: 1;
+    }
+    .state-stop.odd .visual-side {
+      order: 2;
+    }
+
+    .state-stop.even .content-side {
+      order: 2;
+    }
+    .state-stop.even .visual-side {
+      order: 1;
+    }
+
+    /* Content Card */
+    .state-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.25s, transform 0.25s;
+    }
+
+    .state-card:hover {
+      box-shadow: var(--shadow-lg), 0 0 24px rgba(56, 189, 248, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .state-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #f97316, #ffffff, #16a34a);
+    }
+
+    .state-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1rem;
+    }
+
+    .state-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .state-num {
+      background: #e0f2fe;
+      color: var(--turquoise-dark);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .state-zone {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .state-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--ashoka-navy);
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
+
+    .state-epithet {
+      font-size: 0.9rem;
+      color: #0284c7;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+    }
+
+    .state-overview {
+      font-size: 0.95rem;
+      color: #334155;
+      margin-bottom: 1.5rem;
+    }
+
+    /* THE TWO SPECIALITIES (EXACTLY TWO) */
+    .speciality-box {
+      background: linear-gradient(135deg, rgba(240, 249, 255, 0.8), rgba(254, 249, 195, 0.3));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .speciality-heading {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #0369a1;
+      letter-spacing: 0.8px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .speciality-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .speciality-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: #1e293b;
+    }
+
+    .spec-badge {
+      background: #f97316;
+      color: #ffffff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+    .spec-badge.spec-2 {
+      background: #15803d;
+    }
+
+    /* THE TWO IMAGES (EXACTLY TWO: 1 LANDMARK + 1 NATURAL) */
+    .visual-side {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .photo-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.03);
+    }
+
+    .photo-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+    }
+
+    .tag-landmark {
+      background: rgba(249, 115, 22, 0.9);
+      color: #ffffff;
+    }
+
+    .tag-natural {
+      background: rgba(21, 128, 61, 0.9);
+      color: #ffffff;
+    }
+
+    .photo-caption {
+      padding: 0.75rem 1rem;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .caption-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: var(--ashoka-navy);
+    }
+
+    .caption-sub {
+      font-size: 0.75rem;
+      color: #64748b;
+    }
+
+    /* INTERACTIVE INDIA ROUTE MAP SECTION */
+    .map-showcase-section {
+      max-width: 1200px;
+      margin: 3.5rem auto 1rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .map-container-card {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-soft);
+      border-radius: 24px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-lg), 0 0 30px rgba(56, 189, 248, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-container-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #f97316 0%, #ffffff 50%, #16a34a 100%);
+    }
+
+    .map-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .map-title-area h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      color: var(--ashoka-navy);
+      margin-top: 0.3rem;
+    }
+
+    .map-title-area p {
+      color: #64748b;
+      font-size: 0.95rem;
+      max-width: 620px;
+    }
+
+    .map-controls {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .map-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #ffffff;
+      color: var(--ashoka-blue);
+      border: 1px solid var(--border-soft);
+      padding: 0.55rem 1.15rem;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+
+    .map-btn:hover {
+      background: #e0f2fe;
+      border-color: var(--turquoise-mid);
+      transform: translateY(-1px);
+    }
+
+    .map-btn.primary {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }
+    .map-btn.primary:hover {
+      background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    }
+
+    .speed-select {
+      background: #f8fafc;
+      border: 1px solid var(--border-soft);
+      color: #334155;
+      padding: 0.55rem 0.8rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      outline: none;
+    }
+
+    /* Map Layout Grid */
+    .map-visual-layout {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .map-svg-wrap {
+      position: relative;
+      background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-radius: 20px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 1.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: inset 0 2px 10px rgba(56, 189, 248, 0.1);
+      overflow: hidden;
+    }
+
+    /* SVG Map Styling */
+    #india-traveler-svg {
+      width: 100%;
+      max-width: 520px;
+      height: auto;
+      filter: drop-shadow(0 8px 16px rgba(15, 23, 42, 0.08));
+    }
+
+    /* Live Highway Car Marker */
+    #traveler-car-group {
+      cursor: pointer;
+      filter: drop-shadow(0 4px 10px rgba(234, 88, 12, 0.5));
+      transition: transform 0.1s linear;
+    }
+
+    .map-city-node {
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .map-city-node:hover circle.node-ring {
+      stroke-width: 4px;
+      stroke: #f97316;
+    }
+    .map-city-node.active circle.node-core {
+      fill: #ea580c;
+    }
+    .map-city-node.active circle.node-ring {
+      stroke: #f97316;
+      stroke-width: 5px;
+    }
+
+    /* Live Telemetry / State Details Panel (Route 66 Style) */
+    .map-dashboard-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .telemetry-card {
+      background: #ffffff;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 16px;
+      padding: 1.4rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+    }
+
+    .telemetry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.8rem;
+    }
+
+    .live-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #ea580c;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: #ea580c;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #ea580c;
+      animation: pulseDot 1.5s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(1.4); }
+    }
+
+    .telemetry-state-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--ashoka-navy);
+      font-weight: 700;
+    }
+
+    .telemetry-subtitle {
+      font-size: 0.82rem;
+      color: var(--turquoise-dark);
+      font-weight: 600;
+      margin-bottom: 0.8rem;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #f97316, #38bdf8, #16a34a);
+      border-radius: 4px;
+      transition: width 0.3s ease-out;
+    }
+
+    .progress-stats-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* Quick Jump State Pills */
+    .state-jump-pills {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.6rem;
+    }
+
+    .jump-pill {
+      background: #f8fafc;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      padding: 0.6rem 0.8rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .jump-pill:hover, .jump-pill.active {
+      background: #e0f2fe;
+      border-color: var(--turquoise-mid);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 10px rgba(56, 189, 248, 0.2);
+    }
+
+    .jump-pill .pill-num {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: var(--turquoise-dark);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 800;
+      display: grid;
+      place-items: center;
+    }
+
+    .jump-pill .pill-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--ashoka-navy);
+    }
+
+    .jump-pill.active .pill-num {
+      background: #f97316;
+    }
+
+    .telemetry-highlight {
+      font-size: 0.85rem;
+      color: #334155;
+      background: #f0fdf4;
+      border-left: 3px solid #16a34a;
+      padding: 0.65rem 0.8rem;
+      border-radius: 0 8px 8px 0;
+      margin-top: 0.6rem;
+    }
+
+    /* FOOTER */
+    footer.site-footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 4rem 2rem 2rem 2rem;
+      text-align: center;
+      border-top: 4px solid var(--turquoise-mid);
+    }
+
+    .footer-brand {
+      font-family: 'Cinzel', serif;
+      color: #ffffff;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-route {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(255,255,255,0.06);
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      margin-bottom: 2rem;
+      color: var(--turquoise-mid);
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 900px) {
+      .road-spine {
+        left: 28px;
+        transform: none;
+      }
+      .road-checkpoint {
+        left: 28px;
+        transform: translate(-50%, -50%);
+      }
+      .state-stop {
+        grid-template-columns: 1fr;
+        padding-left: 60px;
+        gap: 2rem;
+      }
+      .state-stop.odd .content-side,
+      .state-stop.even .content-side {
+        order: 1;
+      }
+      .state-stop.odd .visual-side,
+      .state-stop.even .visual-side {
+        order: 2;
+      }
+      .hero-title {
+        font-size: 2.2rem;
+      }
+      header.site-header {
+        padding: 0.8rem 1rem;
+      }
+      nav.nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tricolor Top Trim -->
+  <div class="top-tricolor-bar"></div>
+
+  <!-- Main Navigation Header -->
+  <header class="site-header">
+    <a href="#" class="brand">
+      <div class="chakra-badge">
+        <i data-lucide="compass" style="width:18px;height:18px;"></i>
+      </div>
+      <div>
+        <div class="brand-title">THE GRAND BHARAT HIGHWAY</div>
+        <div class="brand-sub">NH 44 & Beyond • K2K Expedition</div>
+      </div>
+    </a>
+    <nav class="nav-links">
+      <a href="#interactive-map" class="nav-pill" style="color:var(--turquoise-dark); font-weight:700;">★ Route Map</a>
+      <a href="#kashmir" class="nav-pill">01 Kashmir</a>
+      <a href="#rajasthan" class="nav-pill">02 Rajasthan</a>
+      <a href="#gujarat" class="nav-pill">03 Gujarat</a>
+      <a href="#maharashtra" class="nav-pill">04 Maharashtra</a>
+      <a href="#goa" class="nav-pill">05 Goa</a>
+      <a href="#kanyakumari" class="nav-pill">06 Kanyakumari</a>
+    </nav>
+    <a href="#kashmir" class="btn-cta">Explore Highway</a>
+  </header>
+
+  <!-- HERO SECTION: 3D Animation limited exclusively to this section -->
+  <section class="hero-container">
+    <canvas id="hero-canvas"></canvas>
+
+    <div class="hero-overlay-content">
+      <div class="hero-tag">
+        <i data-lucide="map-pin" style="width:14px;height:14px;color:#f97316;"></i>
+        National Highway Expedition • India 2026
+      </div>
+      <h1 class="hero-title">
+        <span class="saffron-text">Kashmir</span> to <span class="green-text">Kanyakumari</span>
+      </h1>
+      <p class="hero-desc">
+        A straight North-to-South grand road trip through India's most extraordinary terrain — spanning Rajasthan, Gujarat, Maharashtra, Goa, and coastal Tamil Nadu.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-val">3,800+ KM</div>
+          <div class="stat-label">Total Corridor</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">6 Key States</div>
+          <div class="stat-label">Curated Route</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">2 Per State</div>
+          <div class="stat-label">Landmark & Nature</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">Top 2</div>
+          <div class="stat-label">Specialities</div>
+        </div>
+      </div>
+
+      <!-- Explore and Track Highway Buttons -->
+      <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem;">
+        <a href="#interactive-map" class="btn-cta" style="background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);">
+          <i data-lucide="navigation" style="width:15px;height:15px;display:inline-block;vertical-align:middle;margin-right:6px;"></i>
+          View Interactive India Road Trip Map
+        </a>
+        <a href="#kashmir" class="btn-cta">
+          <i data-lucide="map" style="width:15px;height:15px;display:inline-block;vertical-align:middle;margin-right:6px;"></i>
+          Explore Highway Chapters
+        </a>
+      </div>
+
+      <div class="hero-tip">
+        <i data-lucide="mouse-pointer" style="width:14px;height:14px;"></i>
+        <span>Interactive 3D Compass above • Interactive Route Map & Static Chapters Below</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE INDIA ROAD TRIP MAP SECTION (Route 66 Style Traveler Navigation) -->
+  <section id="interactive-map" class="map-showcase-section">
+    <div class="map-container-card">
+      <div class="map-header">
+        <div class="map-title-area">
+          <div class="hero-tag" style="margin-bottom:0.4rem;">
+            <i data-lucide="compass" style="width:14px;height:14px;color:#0284c7;"></i>
+            Expedition Route Visualizer • North to South
+          </div>
+          <h2>Interactive India Road Trip Map</h2>
+          <p>Watch the traveler road car cruise through each state from the heights of Kashmir, crossing Rajasthan, Gujarat, Maharashtra, Goa, down to Kanyakumari.</p>
+        </div>
+
+        <div class="map-controls">
+          <button id="btn-play-pause" class="map-btn primary" title="Play / Pause Traveler">
+            <i data-lucide="play" id="play-icon" style="width:16px;height:16px;"></i>
+            <span id="play-btn-text">Start Road Trip</span>
+          </button>
+
+          <button id="btn-reset" class="map-btn" title="Restart from Kashmir">
+            <i data-lucide="rotate-ccw" style="width:15px;height:15px;"></i>
+            <span>Restart</span>
+          </button>
+
+          <select id="map-speed-select" class="speed-select" title="Trip Speed">
+            <option value="1">1x Speed</option>
+            <option value="1.5" selected>1.5x Speed</option>
+            <option value="2.5">2.5x Speed</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="map-visual-layout">
+        <!-- SVG Map Container with India Contour matched to your uploaded artwork -->
+        <div class="map-svg-wrap" style="background: radial-gradient(circle at 50% 50%, #b2ebf2 0%, #80deea 40%, #4dd0e1 100%); position:relative;">
+          <svg id="india-traveler-svg" viewBox="0 0 620 740" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <!-- Deep Navy/Dark Teal Fill matching uploaded illustration -->
+              <linearGradient id="illustratedIndiaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1e3a5f" />
+                <stop offset="50%" stop-color="#142c48" />
+                <stop offset="100%" stop-color="#0e1e32" />
+              </linearGradient>
+
+              <linearGradient id="roadGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#f97316" />
+                <stop offset="50%" stop-color="#38bdf8" />
+                <stop offset="100%" stop-color="#22c55e" />
+              </linearGradient>
+
+              <!-- Drop shadow for the India Map Shape -->
+              <filter id="indiaShadow" x="-10%" y="-10%" width="130%" height="130%">
+                <feDropShadow dx="8" dy="12" stdDeviation="6" flood-color="#082f49" flood-opacity="0.3" />
+              </filter>
+
+              <!-- Vehicle glow -->
+              <filter id="carGlow" x="-30%" y="-30%" width="160%" height="160%">
+                <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#ea580c" flood-opacity="0.6" />
+              </filter>
+            </defs>
+
+            <!-- Decorative Sea Wave Crests matching the uploaded artwork -->
+            <g stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.75">
+              <path d="M 40 130 Q 55 120 70 130 Q 85 140 100 130" />
+              <path d="M 30 190 Q 50 175 70 190 Q 90 205 110 190" />
+              <path d="M 440 160 Q 460 145 480 160 Q 500 175 520 160" />
+              <path d="M 420 200 Q 440 185 460 200 Q 480 215 500 200" />
+              <path d="M 60 620 Q 80 605 100 620 Q 120 635 140 620" />
+              <path d="M 120 700 Q 145 685 170 700 Q 195 715 220 700" />
+              <path d="M 430 580 Q 455 565 480 580 Q 505 595 530 580" />
+              <path d="M 450 660 Q 470 645 490 660 Q 510 675 530 660" />
+            </g>
+
+            <!-- EXACT INDIA SILHOUETTE (Shape matched to your uploaded artwork: Kashmir crown, Rajasthan, Gujarat Kathiawar peninsula, Maharashtra & Goa west coast, tapering south to Kanyakumari, and Northeast corridor) -->
+            <path d="M 235 135 
+                     C 220 145, 185 125, 175 145
+                     C 170 160, 185 175, 195 190
+                     C 210 210, 215 230, 200 238
+                     C 175 235, 140 240, 115 260
+                     C 95 280, 115 320, 135 325
+                     C 155 330, 150 355, 130 360
+                     C 105 365, 80 435, 105 450
+                     C 125 460, 150 435, 150 470
+                     C 150 515, 170 560, 180 620
+                     C 195 670, 220 710, 230 715
+                     C 235 718, 240 715, 248 700
+                     C 275 640, 305 560, 310 500
+                     C 315 450, 350 420, 380 395
+                     C 420 360, 440 315, 410 300
+                     C 390 290, 415 260, 430 245
+                     C 445 235, 485 240, 520 220
+                     C 555 200, 575 240, 560 260
+                     C 540 280, 520 330, 515 370
+                     C 510 395, 490 380, 495 345
+                     C 490 310, 445 285, 420 280
+                     C 375 275, 335 245, 305 240
+                     C 285 200, 300 160, 275 140
+                     C 270 120, 285 75, 255 60
+                     C 220 50, 180 80, 205 120 Z" 
+                  fill="url(#illustratedIndiaGrad)" 
+                  stroke="#0284c7" 
+                  stroke-width="2.5" 
+                  stroke-linejoin="round"
+                  filter="url(#indiaShadow)" />
+
+            <!-- Cultural Illustration Motifs on the Map (Faithfully reflecting your reference) -->
+            <!-- 1. Kashmir Lotus motif / Crown Emblem in the North -->
+            <g transform="translate(205, 195) scale(0.65)" opacity="0.9">
+              <path d="M 0 0 C -15 -20, -25 -5, 0 15 C 25 -5, 15 -20, 0 0 Z" fill="#f43f5e" />
+              <path d="M -12 -5 C -30 -15, -35 5, -8 18 Z" fill="#fb7185" />
+              <path d="M 12 -5 C 30 -15, 35 5, 8 18 Z" fill="#fb7185" />
+              <path d="M 0 15 L -10 25 L 10 25 Z" fill="#15803d" />
+            </g>
+
+            <!-- 2. Heritage Monument / Palace Icon (Central/North India) -->
+            <g transform="translate(145, 275) scale(0.65)" opacity="0.95">
+              <!-- Central Dome -->
+              <path d="M 30 18 C 30 5, 45 -5, 50 -12 C 55 -5, 70 5, 70 18 Z" fill="#facc15" stroke="#ffffff" stroke-width="1.5" />
+              <!-- Building Archway -->
+              <rect x="25" y="18" width="50" height="30" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5" rx="3" />
+              <path d="M 40 48 L 40 30 C 40 24, 60 24, 60 30 L 60 48 Z" fill="#0f172a" />
+              <!-- Flanking Minarets -->
+              <rect x="15" y="0" width="6" height="48" fill="#ffffff" stroke="#facc15" stroke-width="1" />
+              <rect x="79" y="0" width="6" height="48" fill="#ffffff" stroke="#facc15" stroke-width="1" />
+              <circle cx="18" cy="-2" r="4" fill="#facc15" />
+              <circle cx="82" cy="-2" r="4" fill="#facc15" />
+            </g>
+
+            <!-- 3. Royal Elephant Emblem (Peninsular Deccan / South India) -->
+            <g transform="translate(225, 400) scale(0.7)" opacity="0.95">
+              <!-- Elephant Body -->
+              <ellipse cx="40" cy="30" rx="32" ry="24" fill="#cbd5e1" />
+              <circle cx="20" cy="22" r="15" fill="#cbd5e1" />
+              <!-- Trunk -->
+              <path d="M 12 25 C 0 30, -5 45, -12 40 C -15 36, -8 30, -2 22" fill="none" stroke="#cbd5e1" stroke-width="7" stroke-linecap="round" />
+              <!-- Legs -->
+              <rect x="18" y="44" width="9" height="20" fill="#94a3b8" rx="3" />
+              <rect x="33" y="46" width="9" height="18" fill="#cbd5e1" rx="3" />
+              <rect x="48" y="44" width="9" height="20" fill="#94a3b8" rx="3" />
+              <rect x="60" y="46" width="9" height="18" fill="#cbd5e1" rx="3" />
+              <!-- Royal Saddle / Howdah -->
+              <path d="M 26 12 Q 40 2 54 12 L 50 25 Q 40 28 30 25 Z" fill="#ea580c" stroke="#facc15" stroke-width="2" />
+            </g>
+
+            <!-- 4. Coastal Coconut Palm Tree (Goa / Kerala / Southern Coastline) -->
+            <g transform="translate(135, 545) scale(0.75)" opacity="0.95">
+              <!-- Curved Trunk -->
+              <path d="M 35 75 Q 42 45 30 25" fill="none" stroke="#b45309" stroke-width="6" stroke-linecap="round" />
+              <!-- Green Fronds -->
+              <path d="M 30 25 C 10 15, -5 30, -15 45 C 5 35, 20 30, 30 25" fill="#22c55e" />
+              <path d="M 30 25 C 20 -5, 0 -10, -10 -5 C 5 5, 20 15, 30 25" fill="#16a34a" />
+              <path d="M 30 25 C 45 -10, 65 -5, 75 10 C 60 10, 45 18, 30 25" fill="#22c55e" />
+              <path d="M 30 25 C 55 25, 70 40, 75 60 C 60 45, 45 35, 30 25" fill="#15803d" />
+            </g>
+
+            <!-- Ocean Waterway Titles -->
+            <text x="35" y="470" font-family="'Cinzel', serif" font-size="12" font-weight="700" fill="#0369a1" letter-spacing="2">ARABIAN SEA</text>
+            <text x="385" y="490" font-family="'Cinzel', serif" font-size="12" font-weight="700" fill="#0369a1" letter-spacing="2">BAY OF BENGAL</text>
+            <text x="175" y="735" font-family="'Cinzel', serif" font-size="11" font-weight="700" fill="#0369a1" letter-spacing="2">INDIAN OCEAN</text>
+
+            <!-- THE GRAND HIGHWAY ROAD ROUTE (North to South passing through Kashmir, Rajasthan, Gujarat, Maharashtra, Goa, and Kanyakumari) -->
+            <!-- 1. Road Asphalt Bed -->
+            <path id="highway-full-path" 
+                  d="M 235 85 
+                     C 215 130, 195 180, 175 220 
+                     C 155 255, 120 310, 115 345 
+                     C 110 380, 145 425, 148 450 
+                     C 145 480, 142 525, 145 555 
+                     C 150 610, 195 675, 230 715" 
+                  fill="none" 
+                  stroke="#0f172a" 
+                  stroke-width="7" 
+                  stroke-linecap="round" 
+                  stroke-linejoin="round" />
+
+            <!-- 2. Dashed Yellow Highway Center Line -->
+            <path d="M 235 85 
+                     C 215 130, 195 180, 175 220 
+                     C 155 255, 120 310, 115 345 
+                     C 110 380, 145 425, 148 450 
+                     C 145 480, 142 525, 145 555 
+                     C 150 610, 195 675, 230 715" 
+                  fill="none" 
+                  stroke="#facc15" 
+                  stroke-width="1.8" 
+                  stroke-dasharray="6,5" 
+                  stroke-linecap="round" />
+
+            <!-- 3. Active Traveler Trail (Draws in Indian Flag Gradient behind the Car) -->
+            <path id="highway-active-trail" 
+                  d="M 235 85 
+                     C 215 130, 195 180, 175 220 
+                     C 155 255, 120 310, 115 345 
+                     C 110 380, 145 425, 148 450 
+                     C 145 480, 142 525, 145 555 
+                     C 150 610, 195 675, 230 715" 
+                  fill="none" 
+                  stroke="url(#roadGrad)" 
+                  stroke-width="5" 
+                  stroke-linecap="round"
+                  stroke-dasharray="1000" 
+                  stroke-dashoffset="1000" />
+
+            <!-- 6 STATE NODES / MILESTONES -->
+            <!-- 1. Kashmir -->
+            <g class="map-city-node" data-stop="0" transform="translate(235, 85)">
+              <circle class="node-ring" r="10" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.9" />
+              <circle class="node-core" r="5" fill="#38bdf8" />
+              <text x="14" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">01 Kashmir</text>
+            </g>
+
+            <!-- 2. Rajasthan -->
+            <g class="map-city-node" data-stop="1" transform="translate(175, 220)">
+              <circle class="node-ring" r="10" fill="none" stroke="#f97316" stroke-width="2.5" opacity="0.9" />
+              <circle class="node-core" r="5" fill="#f97316" />
+              <text x="-95" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">02 Rajasthan</text>
+            </g>
+
+            <!-- 3. Gujarat -->
+            <g class="map-city-node" data-stop="2" transform="translate(115, 345)">
+              <circle class="node-ring" r="10" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.9" />
+              <circle class="node-core" r="5" fill="#38bdf8" />
+              <text x="-80" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">03 Gujarat</text>
+            </g>
+
+            <!-- 4. Maharashtra -->
+            <g class="map-city-node" data-stop="3" transform="translate(148, 450)">
+              <circle class="node-ring" r="10" fill="none" stroke="#22c55e" stroke-width="2.5" opacity="0.9" />
+              <circle class="node-core" r="5" fill="#22c55e" />
+              <text x="16" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">04 Maharashtra</text>
+            </g>
+
+            <!-- 5. Goa -->
+            <g class="map-city-node" data-stop="4" transform="translate(145, 555)">
+              <circle class="node-ring" r="10" fill="none" stroke="#38bdf8" stroke-width="2.5" opacity="0.9" />
+              <circle class="node-core" r="5" fill="#38bdf8" />
+              <text x="-62" y="4" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">05 Goa</text>
+            </g>
+
+            <!-- 6. Kanyakumari -->
+            <g class="map-city-node" data-stop="5" transform="translate(230, 715)">
+              <circle class="node-ring" r="12" fill="none" stroke="#ea580c" stroke-width="3" opacity="0.95" />
+              <circle class="node-core" r="6" fill="#ea580c" />
+              <text x="16" y="5" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="800" fill="#ffffff">06 Kanyakumari</text>
+            </g>
+
+            <!-- TRAVELER ROAD CAR / VEHICLE ICON (Cruises physically along the route) -->
+            <g id="traveler-car-group" transform="translate(235, 85)" filter="url(#carGlow)">
+              <circle r="18" fill="rgba(249, 115, 22, 0.35)">
+                <animate attributeName="r" values="14;22;14" dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite" />
+              </circle>
+              <circle r="12" fill="#ea580c" stroke="#ffffff" stroke-width="2.5" />
+              <!-- Detailed Miniature Car Silhouette -->
+              <path d="M -5 -3 
+                       L -2 -5 
+                       L 2 -5 
+                       L 5 -3 
+                       L 5 3 
+                       L 4 4 
+                       L -4 4 
+                       L -5 3 Z" fill="#ffffff" />
+              <path d="M -3 -2 L 3 -2 L 2 0 L -2 0 Z" fill="#0f172a" />
+              <polygon points="5,-2 13,-6 13,2 5,0" fill="rgba(250, 204, 21, 0.7)" />
+            </g>
+          </svg>
+        </div>
+
+        <!-- Live Route 66-Style Telemetry & Interactive State Jump Dashboard -->
+        <div class="map-dashboard-panel">
+          <div class="telemetry-card">
+            <div class="telemetry-header">
+              <span class="live-indicator">
+                <span class="live-dot"></span>
+                <span>Active Highway Telemetry</span>
+              </span>
+              <span id="telemetry-checkpoint" style="font-size:0.75rem; font-weight:700; color:#0284c7; background:#e0f2fe; padding:2px 8px; border-radius:12px;">STOP 01 / 06</span>
+            </div>
+
+            <h3 id="telemetry-title" class="telemetry-state-name">Jammu & Kashmir</h3>
+            <div id="telemetry-epithet" class="telemetry-subtitle">Northern Origin • The Crown of the Subcontinent</div>
+
+            <!-- Road Progress Bar -->
+            <div class="progress-bar-container">
+              <div id="trip-progress-bar" class="progress-bar-fill"></div>
+            </div>
+            <div class="progress-stats-row">
+              <span id="telemetry-dist">Distance: 0 KM</span>
+              <span id="telemetry-percent">0% Completed</span>
+            </div>
+
+            <!-- Highlights Card for Currently Passed State -->
+            <div class="telemetry-highlight" id="telemetry-details">
+              <strong>Current State Highlight:</strong> Passing Dal Lake Shikaras & Pir Panjal Himalayan alpine pass.
+            </div>
+
+            <div style="margin-top: 1rem; display: flex; gap: 0.6rem;">
+              <a id="btn-jump-section" href="#kashmir" class="map-btn primary" style="font-size:0.78rem; padding:0.45rem 1rem; width:100%; justify-content:center;">
+                <i data-lucide="book-open" style="width:14px;height:14px;"></i>
+                Read State Chapter Below
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Jump State Buttons (Route 66 Chapter Selectors) -->
+          <div>
+            <div style="font-size:0.75rem; font-weight:800; color:#64748b; text-transform:uppercase; letter-spacing:0.8px; margin-bottom:0.6rem;">
+              Hop Car to State Milestone
+            </div>
+            <div class="state-jump-pills">
+              <button class="jump-pill active" data-target="0">
+                <span class="pill-num">01</span>
+                <span class="pill-text">Kashmir</span>
+              </button>
+              <button class="jump-pill" data-target="1">
+                <span class="pill-num">02</span>
+                <span class="pill-text">Rajasthan</span>
+              </button>
+              <button class="jump-pill" data-target="2">
+                <span class="pill-num">03</span>
+                <span class="pill-text">Gujarat</span>
+              </button>
+              <button class="jump-pill" data-target="3">
+                <span class="pill-num">04</span>
+                <span class="pill-text">Maharashtra</span>
+              </button>
+              <button class="jump-pill" data-target="4">
+                <span class="pill-num">05</span>
+                <span class="pill-text">Goa</span>
+              </button>
+              <button class="jump-pill" data-target="5">
+                <span class="pill-num">06</span>
+                <span class="pill-text">Kanyakumari</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHWAY SECTION (Static Route 66 Architecture with North-South Spine) -->
+  <main class="highway-section">
+    <!-- Straight North-to-South Road Spine -->
+    <div class="road-spine"></div>
+
+    <!-- STOP 01: JAMMU & KASHMIR (NORTH START) -->
+    <article id="kashmir" class="state-stop odd">
+      <div class="road-checkpoint" style="top: 8%;">01</div>
+      
+      <div class="content-side">
+        <div class="state-card">
+          <div class="state-header">
+            <div>
+              <div class="state-meta">
+                <span class="state-num">STOP 01</span>
+                <span class="state-zone">Northern Origin • Himalayas</span>
+              </div>
+              <h2 class="state-title">Jammu & Kashmir</h2>
+              <div class="state-epithet">The Crown of the Subcontinent</div>
+            </div>
+            <i data-lucide="mountain" style="color:#0284c7;width:28px;height:28px;"></i>
+          </div>
+
+          <p class="state-overview">
+            The journey begins amidst snow-dusted alpine crests and chilled pine winds. Here, historic Mughal garden terraces slope towards freshwater lakes against the Great Himalayan rampart.
+          </p>
+
+          <!-- Exactly Two Specialities -->
+          <div class="speciality-box">
+            <div class="speciality-heading">
+              <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+              Two Distinct Specialities
+            </div>
+            <ul class="speciality-list">
+              <li class="speciality-item">
+                <span class="spec-badge">01</span>
+                <span><strong>Kashmiri Saffron & Pashmina Weaving:</strong> World-renowned deep crimson Kongh saffron and masterfully spun Pashmina cashmere shawls.</span>
+              </li>
+              <li class="speciality-item">
+                <span class="spec-badge spec-2">02</span>
+                <span><strong>Kahwa Tea & Wooden Shikara Heritage:</strong> Aromatic green tea brewed with saffron, cinnamon, and almonds, enjoyed upon handcrafted cedarwood houseboats.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exactly Two Images: 1 Landmark + 1 Natural -->
+      <div class="visual-side">
+        <div class="photo-card">
+          <span class="photo-tag tag-landmark">Landmark</span>
+          <img src="https://images.unsplash.com/photo-1598091383021-15ddea10925d?auto=format&fit=crop&w=800&q=80" alt="Dal Lake Houseboats & Shikaras, Srinagar" />
+          <div class="photo-caption">
+            <div class="caption-name">Dal Lake Shikaras & Floating Heritage</div>
+            <div class="caption-sub">Srinagar, Kashmir Valley</div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <span class="photo-tag tag-natural">Natural Wonder</span>
+          <img src="https://images.unsplash.com/photo-1661747340818-df15f186554e?auto=format&fit=crop&w=800&q=80" alt="Pahalgam & Gulmarg Himalayan Valley Pines, Kashmir" />
+          <div class="photo-caption">
+            <div class="caption-name">Pir Panjal Range & Alpine Pine Meadows</div>
+            <div class="caption-sub">Pahalgam & Gulmarg Highlands</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- STOP 02: RAJASTHAN -->
+    <article id="rajasthan" class="state-stop even">
+      <div class="road-checkpoint" style="top: 25%;">02</div>
+
+      <div class="content-side">
+        <div class="state-card">
+          <div class="state-header">
+            <div>
+              <div class="state-meta">
+                <span class="state-num">STOP 02</span>
+                <span class="state-zone">Western Corridor • Desert Realm</span>
+              </div>
+              <h2 class="state-title">Rajasthan</h2>
+              <div class="state-epithet">Land of Forts, Dunes & Royal Valour</div>
+            </div>
+            <i data-lucide="shield" style="color:#f97316;width:28px;height:28px;"></i>
+          </div>
+
+          <p class="state-overview">
+            Descending southward into the arid grandeur of the Thar Desert, the highway passes sandstone bastions that stand sentinel over golden sandbanks and rich folklore.
+          </p>
+
+          <!-- Exactly Two Specialities -->
+          <div class="speciality-box">
+            <div class="speciality-heading">
+              <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+              Two Distinct Specialities
+            </div>
+            <ul class="speciality-list">
+              <li class="speciality-item">
+                <span class="spec-badge">01</span>
+                <span><strong>Rajput Hill Fort Architecture:</strong> Impregnable stone fortresses featuring intricate jharokha latticework, stepwells, and royal palaces.</span>
+              </li>
+              <li class="speciality-item">
+                <span class="spec-badge spec-2">02</span>
+                <span><strong>Dal Baati Churma & Bandhani Textiles:</strong> Iconic desert culinary staples made with pure ghee, paired with vibrant tie-dye artisanal fabric.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exactly Two Images: 1 Landmark + 1 Natural -->
+      <div class="visual-side">
+        <div class="photo-card">
+          <span class="photo-tag tag-landmark">Landmark</span>
+          <img src="https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=800&q=80" alt="Hawa Mahal Palace of Winds, Jaipur" />
+          <div class="photo-caption">
+            <div class="caption-name">Hawa Mahal (Palace of Winds)</div>
+            <div class="caption-sub">Jaipur, Rajasthan</div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <span class="photo-tag tag-natural">Natural Wonder</span>
+          <img src="https://images.unsplash.com/photo-1633319755208-26bef3342d34?auto=format&fit=crop&w=800&q=80" alt="Sam Sand Dunes, Thar Desert, Jaisalmer" />
+          <div class="photo-caption">
+            <div class="caption-name">Thar Desert Golden Sand Dunes</div>
+            <div class="caption-sub">Sam & Khuri, Jaisalmer</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- STOP 03: GUJARAT -->
+    <article id="gujarat" class="state-stop odd">
+      <div class="road-checkpoint" style="top: 42%;">03</div>
+
+      <div class="content-side">
+        <div class="state-card">
+          <div class="state-header">
+            <div>
+              <div class="state-meta">
+                <span class="state-num">STOP 03</span>
+                <span class="state-zone">Western Shoreline • White Salt Plains</span>
+              </div>
+              <h2 class="state-title">Gujarat</h2>
+              <div class="state-epithet">The Vibrant Coastal Trading Cradle</div>
+            </div>
+            <i data-lucide="sun" style="color:#0284c7;width:28px;height:28px;"></i>
+          </div>
+
+          <p class="state-overview">
+            Tracking along the Gulf of Khambhat and the edge of the Rann, the route encounters white salt wilderness, ancient carved stepwell marvels, and authentic lion reserves.
+          </p>
+
+          <!-- Exactly Two Specialities -->
+          <div class="speciality-box">
+            <div class="speciality-heading">
+              <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+              Two Distinct Specialities
+            </div>
+            <ul class="speciality-list">
+              <li class="speciality-item">
+                <span class="spec-badge">01</span>
+                <span><strong>Sole Asiatic Lion Sanctuary:</strong> The Gir National Park forest ecosystem, preserving the globe's only remaining wild Asiatic lions.</span>
+              </li>
+              <li class="speciality-item">
+                <span class="spec-badge spec-2">02</span>
+                <span><strong>Rann Utsav & Patola Silk Craftsmanship:</strong> Annual cultural white desert festival combined with intricate double-ikat Patan Patola hand-weaving.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exactly Two Images: 1 Landmark + 1 Natural (Accurate Gujarat Images) -->
+      <div class="visual-side">
+        <div class="photo-card">
+          <span class="photo-tag tag-landmark">Landmark</span>
+          <img src="https://images.unsplash.com/photo-1701796784170-60980a4745f7?auto=format&fit=crop&w=800&q=80" alt="Adalaj Stepwell (Adalaj Ni Vav), Gandhinagar / Ahmedabad, Gujarat" />
+          <div class="photo-caption">
+            <div class="caption-name">Adalaj Ni Vav (Solanki Stepwell Architecture)</div>
+            <div class="caption-sub">Gandhinagar / Ahmedabad, Gujarat</div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <span class="photo-tag tag-natural">Natural Wonder</span>
+          <img src="https://images.unsplash.com/photo-1780681426080-0486829a0d07?auto=format&fit=crop&w=800&q=80" alt="White Rann of Kutch Salt Desert Horizon, Gujarat" />
+          <div class="photo-caption">
+            <div class="caption-name">White Desert of Kutch (Salt Flats)</div>
+            <div class="caption-sub">Great Rann Salt Marshes, Gujarat</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- STOP 04: MAHARASHTRA -->
+    <article id="maharashtra" class="state-stop even">
+      <div class="road-checkpoint" style="top: 59%;">04</div>
+
+      <div class="content-side">
+        <div class="state-card">
+          <div class="state-header">
+            <div>
+              <div class="state-meta">
+                <span class="state-num">STOP 04</span>
+                <span class="state-zone">Deccan Plateau • Western Ghats</span>
+              </div>
+              <h2 class="state-title">Maharashtra</h2>
+              <div class="state-epithet">The Gateway of Fortresses & Modern Energy</div>
+            </div>
+            <i data-lucide="anchor" style="color:#15803d;width:28px;height:28px;"></i>
+          </div>
+
+          <p class="state-overview">
+            The highway winds over the Western Ghats (Sahyadris), cutting through dramatic basalt cliffs, monsoon gorges, and ancient rock-cut cave temples before opening to the Arabian Sea.
+          </p>
+
+          <!-- Exactly Two Specialities -->
+          <div class="speciality-box">
+            <div class="speciality-heading">
+              <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+              Two Distinct Specialities
+            </div>
+            <ul class="speciality-list">
+              <li class="speciality-item">
+                <span class="spec-badge">01</span>
+                <span><strong>Ancient Rock-Cut Basalt Caves:</strong> UNESCO World Heritage cave monasteries at Ajanta, Ellora, and Elephanta carved out of solid volcanic rock.</span>
+              </li>
+              <li class="speciality-item">
+                <span class="spec-badge spec-2">02</span>
+                <span><strong>Vada Pav Culture & Alphonso Mangoes:</strong> World-famous fiery Mumbai street food and the GI-tagged sweet Ratnagiri Hapus mangoes.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exactly Two Images: 1 Landmark + 1 Natural -->
+      <div class="visual-side">
+        <div class="photo-card">
+          <span class="photo-tag tag-landmark">Landmark</span>
+          <img src="https://images.unsplash.com/photo-1529253355930-ddbe423a2ac7?auto=format&fit=crop&w=800&q=80" alt="Gateway of India, Mumbai Harbour, Maharashtra" />
+          <div class="photo-caption">
+            <div class="caption-name">Gateway of India & Mumbai Harbour</div>
+            <div class="caption-sub">Colaba, Mumbai, Maharashtra</div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <span class="photo-tag tag-natural">Natural Wonder</span>
+          <img src="https://images.unsplash.com/photo-1712186869971-24b3e49b1375?auto=format&fit=crop&w=800&q=80" alt="Sahyadri Mountains and Western Ghats Ridge, Maharashtra" />
+          <div class="photo-caption">
+            <div class="caption-name">Sahyadri Mountain Escarpment</div>
+            <div class="caption-sub">Western Ghats Ridge, Maharashtra</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- STOP 05: GOA -->
+    <article id="goa" class="state-stop odd">
+      <div class="road-checkpoint" style="top: 76%;">05</div>
+
+      <div class="content-side">
+        <div class="state-card">
+          <div class="state-header">
+            <div>
+              <div class="state-meta">
+                <span class="state-num">STOP 05</span>
+                <span class="state-zone">Konkan Coast • Tropical Haven</span>
+              </div>
+              <h2 class="state-title">Goa</h2>
+              <div class="state-epithet">Susegad Breezes, Baroque Churches & Golden Palms</div>
+            </div>
+            <i data-lucide="palmtree" style="color:#0284c7;width:28px;height:28px;"></i>
+          </div>
+
+          <p class="state-overview">
+            Hugging the emerald Konkan coast, the journey eases into peaceful coastal towns lined with Portuguese-era chapels, spice plantations, and sea breezes.
+          </p>
+
+          <!-- Exactly Two Specialities -->
+          <div class="speciality-box">
+            <div class="speciality-heading">
+              <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+              Two Distinct Specialities
+            </div>
+            <ul class="speciality-list">
+              <li class="speciality-item">
+                <span class="spec-badge">01</span>
+                <span><strong>Portuguese-Baroque Basilica Architecture:</strong> Historic Latin quarter settlements and the 16th-century Basilica of Bom Jesus.</span>
+              </li>
+              <li class="speciality-item">
+                <span class="spec-badge spec-2">02</span>
+                <span><strong>Goan Fish Curry & Cashew Feni Distilling:</strong> Fiery coconut-kokum seafood recipes paired with heritage indigenous cashew liquor distilling.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exactly Two Images: 1 Landmark + 1 Natural -->
+      <div class="visual-side">
+        <div class="photo-card">
+          <span class="photo-tag tag-landmark">Landmark</span>
+          <img src="https://images.unsplash.com/photo-1706940119676-957a79a61248?auto=format&fit=crop&w=800&q=80" alt="Basilica of Bom Jesus Baroque Church, Old Goa" />
+          <div class="photo-caption">
+            <div class="caption-name">Basilica of Bom Jesus (UNESCO Baroque Church)</div>
+            <div class="caption-sub">Old Goa, Goa</div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <span class="photo-tag tag-natural">Natural Wonder</span>
+          <img src="https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=800&q=80" alt="Tropical Coastline & Coconut Palms, Goa" />
+          <div class="photo-caption">
+            <div class="caption-name">Goan Tropical Coastline & Coconut Palms</div>
+            <div class="caption-sub">Palolem & South Goa Beaches</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- STOP 06: KANYAKUMARI (SOUTHERN TERMINUS) -->
+    <article id="kanyakumari" class="state-stop even">
+      <div class="road-checkpoint" style="top: 93%;">06</div>
+
+      <div class="content-side">
+        <div class="state-card">
+          <div class="state-header">
+            <div>
+              <div class="state-meta">
+                <span class="state-num">STOP 06</span>
+                <span class="state-zone">Southern Terminus • Cape Comorin</span>
+              </div>
+              <h2 class="state-title">Kanyakumari</h2>
+              <div class="state-epithet">Where Three Oceans Meet at Land's End</div>
+            </div>
+            <i data-lucide="waves" style="color:#0284c7;width:28px;height:28px;"></i>
+          </div>
+
+          <p class="state-overview">
+            The grand highway concludes at the absolute southern tip of the Indian mainland. Here, the waters of the Arabian Sea, the Bay of Bengal, and the Indian Ocean converge in panoramic serenity.
+          </p>
+
+          <!-- Exactly Two Specialities -->
+          <div class="speciality-box">
+            <div class="speciality-heading">
+              <i data-lucide="sparkles" style="width:14px;height:14px;"></i>
+              Two Distinct Specialities
+            </div>
+            <ul class="speciality-list">
+              <li class="speciality-item">
+                <span class="spec-badge">01</span>
+                <span><strong>The Triveni Sangam Confluence:</strong> The unique marine union of three water bodies where you can watch sunrise and sunset from the same shore.</span>
+              </li>
+              <li class="speciality-item">
+                <span class="spec-badge spec-2">02</span>
+                <span><strong>Vivekananda Rock & Thiruvalluvar Memorial:</strong> Majestic stone monuments erected on twin offshore sea rocks honouring philosophy and Tamil literature.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Exactly Two Images: 1 Landmark + 1 Natural -->
+      <div class="visual-side">
+        <div class="photo-card">
+          <span class="photo-tag tag-landmark">Landmark</span>
+          <img src="https://images.unsplash.com/photo-1704019541434-550af5403e7f?auto=format&fit=crop&w=800&q=80" alt="Vivekananda Rock Memorial, Kanyakumari" />
+          <div class="photo-caption">
+            <div class="caption-name">Vivekananda Rock Memorial & Sea Shrine</div>
+            <div class="caption-sub">Cape Comorin Rock Island, Kanyakumari</div>
+          </div>
+        </div>
+
+        <div class="photo-card">
+          <span class="photo-tag tag-natural">Natural Wonder</span>
+          <img src="https://images.unsplash.com/photo-1707408350511-7c97527bce8b?auto=format&fit=crop&w=800&q=80" alt="Triveni Sangam Tri-Ocean Confluence Sunset, Kanyakumari" />
+          <div class="photo-caption">
+            <div class="caption-name">Triveni Sangam Tri-Ocean Sunset Horizon</div>
+            <div class="caption-sub">Confluence of Arabian Sea, Bay of Bengal & Indian Ocean</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-brand">THE GRAND BHARAT HIGHWAY</div>
+    <div class="footer-route">
+      <span>Kashmir (NH 44 Origin)</span>
+      <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      <span>Rajasthan</span>
+      <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      <span>Gujarat</span>
+      <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      <span>Maharashtra</span>
+      <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      <span>Goa</span>
+      <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      <span>Kanyakumari (Southern Cape)</span>
+    </div>
+    <p style="font-size:0.85rem;color:#64748b;max-width:600px;margin:0 auto 1.5rem auto;">
+      Designed in the layout tradition of Route 66's travel inspiration index. All content, landmarks, and nature cards remain clean, accessible, and static for effortless road trip planning.
+    </p>
+    <p style="font-size:0.75rem;color:#475569;">
+      &copy; 2026 The Grand Bharat Highway Project. Styled with Indian Flag tints on baby-blue turquoise foundations.
+    </p>
+  </footer>
+
+  <!-- THREE.JS 3D HERO SCRIPT (STRICTLY CONFINED TO HERO CANVAS ONLY) -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // 3D Scene Limited to Hero Container Canvas
+    const canvas = document.getElementById('hero-canvas');
+    const heroSection = document.querySelector('.hero-container');
+
+    const scene = new THREE.Scene();
+    
+    // Camera
+    const camera = new THREE.PerspectiveCamera(
+      45,
+      heroSection.clientWidth / heroSection.clientHeight,
+      0.1,
+      1000
+    );
+    camera.position.set(0, 3, 14);
+
+    // Renderer
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true
+    });
+    renderer.setSize(heroSection.clientWidth, heroSection.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.9);
+    scene.add(ambientLight);
+
+    const dirLight = new THREE.DirectionalLight(0x38bdf8, 1.2);
+    dirLight.position.set(5, 10, 7);
+    scene.add(dirLight);
+
+    const saffronLight = new THREE.PointLight(0xf97316, 2, 20);
+    saffronLight.position.set(-6, 2, 4);
+    scene.add(saffronLight);
+
+    const greenLight = new THREE.PointLight(0x16a34a, 2, 20);
+    greenLight.position.set(6, -2, 4);
+    scene.add(greenLight);
+
+    // Group for rotating 3D highway elements
+    const heroGroup = new THREE.Group();
+    scene.add(heroGroup);
+
+    // 1. 3D Ashoka / Highway Compass Ring (Toruses)
+    const outerRingGeo = new THREE.TorusGeometry(5, 0.08, 16, 100);
+    const outerRingMat = new THREE.MeshStandardMaterial({
+      color: 0x0284c7, // Turquoise Dark
+      metalness: 0.6,
+      roughness: 0.2
+    });
+    const outerRing = new THREE.Mesh(outerRingGeo, outerRingMat);
+    heroGroup.add(outerRing);
+
+    const innerRingGeo = new THREE.TorusGeometry(4.2, 0.05, 16, 80);
+    const innerRingMat = new THREE.MeshStandardMaterial({
+      color: 0xf97316, // Saffron accent
+      metalness: 0.7,
+      roughness: 0.3
+    });
+    const innerRing = new THREE.Mesh(innerRingGeo, innerRingMat);
+    innerRing.rotation.x = Math.PI / 4;
+    heroGroup.add(innerRing);
+
+    // 2. 3D Highway Ribbon Arc through the Center (Representing North-to-South corridor)
+    const curvePoints = [];
+    for (let i = -6; i <= 6; i += 0.5) {
+      curvePoints.push(new THREE.Vector3(
+        Math.sin(i * 0.4) * 1.5,
+        -i * 0.9,
+        Math.cos(i * 0.3) * 0.8
+      ));
+    }
+    const spline = new THREE.CatmullRomCurve3(curvePoints);
+    const tubeGeo = new THREE.TubeGeometry(spline, 64, 0.16, 12, false);
+    const tubeMat = new THREE.MeshStandardMaterial({
+      color: 0x334155, // Asphalt road
+      roughness: 0.4,
+      metalness: 0.5
+    });
+    const roadMesh = new THREE.Mesh(tubeGeo, tubeMat);
+    heroGroup.add(roadMesh);
+
+    // 3. Floating Tricolor Particles (Saffron, White, Emerald Green)
+    const particleCount = 180;
+    const pGeo = new THREE.BufferGeometry();
+    const posArray = new Float32Array(particleCount * 3);
+    const colorArray = new Float32Array(particleCount * 3);
+
+    const colSaffron = new THREE.Color(0xf97316);
+    const colWhite = new THREE.Color(0xffffff);
+    const colGreen = new THREE.Color(0x16a34a);
+    const colTurquoise = new THREE.Color(0x38bdf8);
+
+    for (let i = 0; i < particleCount; i++) {
+      posArray[i * 3] = (Math.random() - 0.5) * 18;
+      posArray[i * 3 + 1] = (Math.random() - 0.5) * 14;
+      posArray[i * 3 + 2] = (Math.random() - 0.5) * 10;
+
+      let chosenColor;
+      const r = Math.random();
+      if (r < 0.3) chosenColor = colSaffron;
+      else if (r < 0.6) chosenColor = colGreen;
+      else if (r < 0.8) chosenColor = colTurquoise;
+      else chosenColor = colWhite;
+
+      colorArray[i * 3] = chosenColor.r;
+      colorArray[i * 3 + 1] = chosenColor.g;
+      colorArray[i * 3 + 2] = chosenColor.b;
+    }
+
+    pGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    pGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    const pMat = new THREE.PointsMaterial({
+      size: 0.14,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.85
+    });
+
+    const particles = new THREE.Points(pGeo, pMat);
+    heroGroup.add(particles);
+
+    // Interactive Drag / Rotation
+    let isDragging = false;
+    let prevMouseX = 0;
+    let prevMouseY = 0;
+    let targetRotationY = 0;
+    let targetRotationX = 0;
+
+    canvas.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    window.addEventListener('mousemove', (e) => {
+      if (!isDragging) {
+        // Subtle tilt with mouse movement over hero
+        const rect = heroSection.getBoundingClientRect();
+        if (e.clientY <= rect.bottom) {
+          const normX = (e.clientX / window.innerWidth) - 0.5;
+          const normY = (e.clientY / window.innerHeight) - 0.5;
+          targetRotationY = normX * 0.8;
+          targetRotationX = normY * 0.4;
+        }
+        return;
+      }
+      const deltaX = e.clientX - prevMouseX;
+      const deltaY = e.clientY - prevMouseY;
+      targetRotationY += deltaX * 0.006;
+      targetRotationX += deltaY * 0.006;
+      prevMouseX = e.clientX;
+      prevMouseY = e.clientY;
+    });
+
+    // Touch Support for Mobile
+    canvas.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        isDragging = true;
+        prevMouseX = e.touches[0].clientX;
+        prevMouseY = e.touches[0].clientY;
+      }
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDragging || e.touches.length !== 1) return;
+      const deltaX = e.touches[0].clientX - prevMouseX;
+      const deltaY = e.touches[0].clientY - prevMouseY;
+      targetRotationY += deltaX * 0.008;
+      targetRotationX += deltaY * 0.008;
+      prevMouseX = e.touches[0].clientX;
+      prevMouseY = e.touches[0].clientY;
+    });
+
+    window.addEventListener('touchend', () => {
+      isDragging = false;
+    });
+
+    // Render Loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Smooth interpolation for 3D rotation
+      heroGroup.rotation.y += (targetRotationY - heroGroup.rotation.y) * 0.05 + 0.0015;
+      heroGroup.rotation.x += (targetRotationX - heroGroup.rotation.x) * 0.05;
+
+      // Gentle counter-rotations
+      outerRing.rotation.z += 0.002;
+      innerRing.rotation.z -= 0.003;
+      particles.rotation.y += 0.0005;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Window Resize Handler
+    window.addEventListener('resize', () => {
+      const width = heroSection.clientWidth;
+      const height = heroSection.clientHeight;
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      renderer.setSize(width, height);
+    });
+
+    /* ==========================================================================
+       INTERACTIVE INDIA ROAD TRIP MAP & TRAVELER CAR CONTROLLER
+       ========================================================================== */
+    const highwayPath = document.getElementById('highway-full-path');
+    const activeTrail = document.getElementById('highway-active-trail');
+    const travelerCar = document.getElementById('traveler-car-group');
+    const pathTotalLength = highwayPath.getTotalLength();
+
+    // Prepare trail dasharray
+    activeTrail.style.strokeDasharray = pathTotalLength;
+    activeTrail.style.strokeDashoffset = pathTotalLength;
+
+    // State Milestones on the route (Proportional progress along highway path)
+    const stateStops = [
+      {
+        id: 'kashmir',
+        name: 'Jammu & Kashmir',
+        epithet: 'Northern Origin • The Crown of the Subcontinent',
+        checkpoint: 'STOP 01 / 06',
+        dist: '0 KM',
+        progressPercent: 0,
+        t: 0.0,
+        highlight: 'Passing Dal Lake Shikaras & Pir Panjal Himalayan alpine pass.'
+      },
+      {
+        id: 'rajasthan',
+        name: 'Rajasthan',
+        epithet: 'Western Corridor • Land of Forts & Golden Dunes',
+        checkpoint: 'STOP 02 / 06',
+        dist: '850 KM',
+        progressPercent: 22,
+        t: 0.22,
+        highlight: 'Cruising past Hawa Mahal, Thar desert dunes, and royal stepwells.'
+      },
+      {
+        id: 'gujarat',
+        name: 'Gujarat',
+        epithet: 'Western Shoreline • The Vibrant Coastal Trading Cradle',
+        checkpoint: 'STOP 03 / 06',
+        dist: '1,550 KM',
+        progressPercent: 42,
+        t: 0.42,
+        highlight: 'Crossing the Great White Rann of Kutch & Statue of Unity corridor.'
+      },
+      {
+        id: 'maharashtra',
+        name: 'Maharashtra',
+        epithet: 'Deccan Plateau • Gateway of Fortresses & Western Ghats',
+        checkpoint: 'STOP 04 / 06',
+        dist: '2,250 KM',
+        progressPercent: 62,
+        t: 0.62,
+        highlight: 'Traversing the Sahyadri Ghats, Mumbai Harbour & rock-cut cave temples.'
+      },
+      {
+        id: 'goa',
+        name: 'Goa',
+        epithet: 'Konkan Coast • Susegad Breezes & Baroque Basilicas',
+        checkpoint: 'STOP 05 / 06',
+        dist: '2,900 KM',
+        progressPercent: 78,
+        t: 0.78,
+        highlight: 'Cruising the emerald Konkan coast, Palolem beach palms & historic churches.'
+      },
+      {
+        id: 'kanyakumari',
+        name: 'Kanyakumari',
+        epithet: 'Southern Terminus • Where Three Oceans Meet at Land’s End',
+        checkpoint: 'STOP 06 / 06',
+        dist: '3,800 KM',
+        progressPercent: 100,
+        t: 1.0,
+        highlight: 'Expedition Complete! Triveni Sangam ocean confluence & Vivekananda Rock.'
+      }
+    ];
+
+    // UI elements
+    const playBtn = document.getElementById('btn-play-pause');
+    const playIcon = document.getElementById('play-icon');
+    const playBtnText = document.getElementById('play-btn-text');
+    const resetBtn = document.getElementById('btn-reset');
+    const speedSelect = document.getElementById('map-speed-select');
+
+    const telemetryTitle = document.getElementById('telemetry-title');
+    const telemetryEpithet = document.getElementById('telemetry-epithet');
+    const telemetryCheckpoint = document.getElementById('telemetry-checkpoint');
+    const telemetryDist = document.getElementById('telemetry-dist');
+    const telemetryPercent = document.getElementById('telemetry-percent');
+    const telemetryDetails = document.getElementById('telemetry-details');
+    const tripProgressBar = document.getElementById('trip-progress-bar');
+    const jumpSectionLink = document.getElementById('btn-jump-section');
+
+    const jumpPills = document.querySelectorAll('.jump-pill');
+    const cityNodes = document.querySelectorAll('.map-city-node');
+
+    let currentT = 0; // 0.0 to 1.0
+    let isPlaying = false;
+    let animFrameId = null;
+    let baseTripDuration = 18000; // 18 seconds for full trip at 1x
+    let lastTimestamp = null;
+
+    // Update car position, angle, trail, and active telemetry
+    function updateTraveler(t) {
+      currentT = Math.max(0, Math.min(1, t));
+      const currentDistance = currentT * pathTotalLength;
+
+      // 1. Position on path
+      const point = highwayPath.getPointAtLength(currentDistance);
+
+      // Compute heading angle for smooth car rotation
+      const nextDistance = Math.min(pathTotalLength, currentDistance + 2);
+      const nextPoint = highwayPath.getPointAtLength(nextDistance);
+      const angleDeg = Math.atan2(nextPoint.y - point.y, nextPoint.x - point.x) * (180 / Math.PI);
+
+      travelerCar.setAttribute('transform', `translate(${point.x}, ${point.y}) rotate(${angleDeg})`);
+
+      // 2. Active Trail fill
+      const offset = pathTotalLength - currentDistance;
+      activeTrail.style.strokeDashoffset = offset;
+
+      // 3. Determine current passed state
+      let activeIndex = 0;
+      for (let i = 0; i < stateStops.length; i++) {
+        if (currentT >= stateStops[i].t - 0.04) {
+          activeIndex = i;
+        }
+      }
+
+      const activeState = stateStops[activeIndex];
+      const overallPercent = Math.round(currentT * 100);
+      const totalKm = Math.round(currentT * 3800);
+
+      // 4. Update UI telemetry panel
+      telemetryTitle.textContent = activeState.name;
+      telemetryEpithet.textContent = activeState.epithet;
+      telemetryCheckpoint.textContent = activeState.checkpoint;
+      telemetryDist.textContent = `Distance: ${totalKm} KM`;
+      telemetryPercent.textContent = `${overallPercent}% Completed`;
+      telemetryDetails.innerHTML = `<strong>Current Milestone:</strong> ${activeState.highlight}`;
+      tripProgressBar.style.width = `${overallPercent}%`;
+      jumpSectionLink.setAttribute('href', `#${activeState.id}`);
+
+      // 5. Update Quick Jump Pills & Map Node Styling
+      jumpPills.forEach((pill, idx) => {
+        if (idx === activeIndex) {
+          pill.classList.add('active');
+        } else {
+          pill.classList.remove('active');
+        }
+      });
+
+      cityNodes.forEach((node, idx) => {
+        if (idx <= activeIndex) {
+          node.classList.add('active');
+        } else {
+          node.classList.remove('active');
+        }
+      });
+    }
+
+    // Animation Loop for Smooth Road Cruise
+    function travelerLoop(timestamp) {
+      if (!lastTimestamp) lastTimestamp = timestamp;
+      const delta = timestamp - lastTimestamp;
+      lastTimestamp = timestamp;
+
+      const speedMultiplier = parseFloat(speedSelect.value) || 1.5;
+      const step = (delta / baseTripDuration) * speedMultiplier;
+      currentT += step;
+
+      if (currentT >= 1) {
+        currentT = 1;
+        updateTraveler(currentT);
+        pauseTraveler();
+        return;
+      }
+
+      updateTraveler(currentT);
+      if (isPlaying) {
+        animFrameId = requestAnimationFrame(travelerLoop);
+      }
+    }
+
+    function startTraveler() {
+      if (currentT >= 1) {
+        currentT = 0; // restart if at the end
+      }
+      isPlaying = true;
+      lastTimestamp = null;
+      playBtnText.textContent = 'Pause Trip';
+      playBtn.classList.remove('primary');
+      playBtn.style.background = '#f97316';
+      playBtn.style.color = '#ffffff';
+      playIcon.setAttribute('data-lucide', 'pause');
+      lucide.createIcons();
+      animFrameId = requestAnimationFrame(travelerLoop);
+    }
+
+    function pauseTraveler() {
+      isPlaying = false;
+      playBtnText.textContent = currentT >= 1 ? 'Replay Trip' : 'Resume Road Trip';
+      playBtn.classList.add('primary');
+      playBtn.style.background = '';
+      playBtn.style.color = '';
+      playIcon.setAttribute('data-lucide', 'play');
+      lucide.createIcons();
+      if (animFrameId) cancelAnimationFrame(animFrameId);
+    }
+
+    playBtn.addEventListener('click', () => {
+      if (isPlaying) {
+        pauseTraveler();
+      } else {
+        startTraveler();
+      }
+    });
+
+    resetBtn.addEventListener('click', () => {
+      pauseTraveler();
+      currentT = 0;
+      updateTraveler(0);
+    });
+
+    // Jump to specific state milestone on click
+    jumpPills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        const targetIndex = parseInt(pill.getAttribute('data-target'), 10);
+        const targetT = stateStops[targetIndex].t;
+        pauseTraveler();
+        updateTraveler(targetT);
+      });
+    });
+
+    cityNodes.forEach((node) => {
+      node.addEventListener('click', () => {
+        const stopIdx = parseInt(node.getAttribute('data-stop'), 10);
+        const targetT = stateStops[stopIdx].t;
+        pauseTraveler();
+        updateTraveler(targetT);
+      });
+    });
+
+    // Make Traveler Car directly draggable along route
+    let isCarDragging = false;
+    const svgMap = document.getElementById('india-traveler-svg');
+
+    travelerCar.addEventListener('mousedown', () => {
+      isCarDragging = true;
+      pauseTraveler();
+    });
+
+    window.addEventListener('mouseup', () => {
+      isCarDragging = false;
+    });
+
+    svgMap.addEventListener('mousemove', (e) => {
+      if (!isCarDragging) return;
+      const rect = svgMap.getBoundingClientRect();
+      const clientY = e.clientY - rect.top;
+      const normY = Math.max(0, Math.min(1, (clientY - 40) / (rect.height - 80)));
+      updateTraveler(normY);
+    });
+
+    // Initial state setup
+    updateTraveler(0);
+
+  </script>
+</body>
+</html>
