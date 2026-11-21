@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Ocean Waves -->
+  <path d="M10 120 Q25 114 40 120 T70 120 T100 120 T130 120 T155 120" />
+  <path d="M20 125 Q40 122 60 125 T100 125 T140 125" stroke-dasharray="6 6" />
+  <!-- Rock Outcrop Base -->
+  <path d="M25 120 L35 90 L50 95 L70 85 L105 88 L130 96 L140 120 Z" />
+  <line x1="45" y1="102" x2="115" y2="105" />
+  <!-- Memorial Temple Mandapam Structure -->
+  <path d="M55 86 L55 60 L110 60 L110 86" />
+  <!-- Stepped Shikara Roof -->
+  <path d="M50 60 L60 42 L105 42 L115 60 Z" />
+  <path d="M64 42 L72 26 L92 26 L100 42 Z" />
+  <!-- Kalasam finial at top -->
+  <line x1="82" y1="26" x2="82" y2="16" />
+  <circle cx="82" cy="14" r="2" />
+  <!-- Pillars -->
+  <line x1="68" y1="60" x2="68" y2="86" />
+  <line x1="82" y1="60" x2="82" y2="86" />
+  <line x1="96" y1="60" x2="96" y2="86" />
+</svg>

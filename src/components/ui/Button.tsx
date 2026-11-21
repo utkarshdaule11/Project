@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: "primary" | "secondary" | "outline" | "saffron";
@@ -6,13 +6,16 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   children: React.ReactNode;
 }
 
-export function Button({
-  variant = "primary",
-  size = "md",
-  className = "",
-  children,
-  ...props
-}: ButtonProps) {
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button(
+  {
+    variant = "primary",
+    size = "md",
+    className = "",
+    children,
+    ...props
+  },
+  ref
+) {
   const baseStyles =
     "inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none";
 
@@ -35,10 +38,13 @@ export function Button({
 
   return (
     <button
+      ref={ref}
       className={`${baseStyles} ${sizeStyles} ${variantStyles} ${className}`}
       {...props}
     >
       {children}
     </button>
   );
-}
+});
+
+Button.displayName = "Button";

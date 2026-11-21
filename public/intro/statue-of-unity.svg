@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 160" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Pedestal -->
+  <path d="M40 150 L100 150 L95 130 L45 130 Z" />
+  <line x1="30" y1="150" x2="110" y2="150" />
+  <!-- Feet and Legs -->
+  <path d="M52 130 L55 95" />
+  <path d="M88 130 L85 95" />
+  <path d="M50 120 L90 120" stroke-dasharray="4 4" />
+  <!-- Torso & Kurta / Dhoti drape -->
+  <path d="M46 95 L44 52 L96 52 L94 95 Z" />
+  <!-- Shawl drape diagonal -->
+  <path d="M46 56 L92 84" />
+  <path d="M48 68 L88 95" />
+  <!-- Shoulders and Arms -->
+  <path d="M44 52 L36 82 L42 85" />
+  <path d="M96 52 L104 82 L98 85" />
+  <!-- Neck and Head -->
+  <path d="M62 52 L62 44 L78 44 L78 52" />
+  <ellipse cx="70" cy="34" rx="12" ry="14" />
+  <!-- Facial contour line -->
+  <path d="M68 28 L72 34 L68 38" />
+</svg>

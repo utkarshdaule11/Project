@@ -55,3 +55,11 @@ export interface HeroData {
     alt: string;
   };
 }
+
+export interface IntroData {
+  title: string;
+  subtitle: string;
+  startLabel: string;
+  skipLabel: string;
+  targetKm: number;
+}

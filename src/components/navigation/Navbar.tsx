@@ -48,8 +48,8 @@ export function Navbar({
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? "bg-surface/95 shadow-xs backdrop-blur-md border-b border-border"
-          : "bg-surface/90 border-b border-border/60"
+        ? "bg-surface/95 shadow-xs backdrop-blur-md border-b border-border"
+        : "bg-surface/90 border-b border-border/60"
         }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-3 sm:px-6 lg:px-8">
@@ -79,8 +79,7 @@ export function Navbar({
         >
           <button
             onClick={() => scrollTo("hero")}
-            className={`rounded-full px-4 py-1.5 font-sans text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              activeSection === "hero"
+            className={`rounded-full px-4 py-1.5 font-sans text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeSection === "hero"
                 ? "bg-primary-dark text-white shadow-xs"
                 : "text-text-muted hover:text-text hover:bg-surface"
               }`}
@@ -90,8 +89,7 @@ export function Navbar({
 
           <button
             onClick={() => scrollTo("interactive-map")}
-            className={`rounded-full px-4 py-1.5 font-sans text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              activeSection === "interactive-map"
+            className={`rounded-full px-4 py-1.5 font-sans text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeSection === "interactive-map"
                 ? "bg-primary-dark text-white shadow-xs"
                 : "text-text-muted hover:text-text hover:bg-surface"
               }`}
@@ -101,8 +99,7 @@ export function Navbar({
 
           <button
             onClick={() => scrollTo("chapters")}
-            className={`rounded-full px-4 py-1.5 font-sans text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${
-              activeSection === "chapters"
+            className={`rounded-full px-4 py-1.5 font-sans text-xs font-semibold transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-primary ${activeSection === "chapters"
                 ? "bg-primary-dark text-white shadow-xs"
                 : "text-text-muted hover:text-text hover:bg-surface"
               }`}

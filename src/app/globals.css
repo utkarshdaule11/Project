@@ -16,3 +16,8 @@ body {
   background: var(--background);
   overflow-x: hidden;
 }
+
+html.intro-pending #main-content {
+  opacity: 0;
+  pointer-events: none;
+}

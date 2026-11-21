@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 120" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Mountain peaks -->
+  <path d="M10 100 L55 30 L85 75 L120 20 L150 100 Z" />
+  <!-- Snow ridges -->
+  <path d="M55 30 L45 52 L60 56 L55 70" />
+  <path d="M120 20 L110 45 L126 50 L118 68" />
+  <!-- Front smaller peak -->
+  <path d="M65 100 L95 55 L125 100" />
+  <path d="M95 55 L90 70 L102 74" />
+  <!-- Base lines -->
+  <line x1="5" y1="100" x2="155" y2="100" />
+  <line x1="15" y1="108" x2="145" y2="108" stroke-dasharray="8 6" />
+</svg>

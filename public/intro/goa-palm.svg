@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 140" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Coastal Sand Mound -->
+  <path d="M10 130 Q70 120 130 130" />
+  <path d="M20 135 Q70 128 120 135" stroke-dasharray="6 4" />
+  <!-- Curved Palm Trunk -->
+  <path d="M55 130 Q60 80 82 45" stroke-width="3" />
+  <path d="M60 130 Q65 82 86 46" stroke-width="2" />
+  <!-- Trunk Ring Texture -->
+  <line x1="56" y1="115" x2="62" y2="116" />
+  <line x1="59" y1="95" x2="66" y2="97" />
+  <line x1="65" y1="75" x2="73" y2="78" />
+  <!-- Palm Fronds / Leaves radiating from top (84, 45) -->
+  <path d="M84 45 Q50 30 25 45" />
+  <path d="M84 45 Q65 18 42 22" />
+  <path d="M84 45 Q88 12 92 10" />
+  <path d="M84 45 Q110 18 125 30" />
+  <path d="M84 45 Q115 42 128 60" />
+  <path d="M84 45 Q95 62 105 78" />
+  <!-- Coconuts -->
+  <circle cx="80" cy="48" r="3" fill="currentColor" />
+  <circle cx="86" cy="50" r="3" fill="currentColor" />
+</svg>

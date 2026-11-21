@@ -1,5 +1,13 @@
-import { StateChapter, HeroData } from "@/types/state";
-export type { StateChapter, HeroData };
+import { StateChapter, HeroData, IntroData } from "@/types/state";
+export type { StateChapter, HeroData, IntroData };
+
+export const introContent: IntroData = {
+  title: "Kashmir to Kanyakumari",
+  subtitle: "Heading to Kanyakumari",
+  startLabel: "Start your journey",
+  skipLabel: "Skip",
+  targetKm: 3800,
+};
 
 export const heroContent: HeroData = {
   kicker: "The Grand Bharat Highway",

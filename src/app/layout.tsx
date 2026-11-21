@@ -1,6 +1,12 @@
 import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
+
+const IntroSequence = dynamic(
+  () => import("@/components/intro/IntroSequence").then((mod) => mod.IntroSequence),
+  { ssr: false }
+);
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -73,8 +79,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(!sessionStorage.getItem('bharat_highway_intro_v1')){document.documentElement.classList.add('intro-pending');}}catch(e){}`,
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-background font-sans text-text antialiased">
-        {children}
+        <IntroSequence />
+        <div id="main-content" className="transition-opacity duration-500">
+          {children}
+        </div>
       </body>
     </html>
   );

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 130" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Base Ground -->
+  <line x1="15" y1="120" x2="145" y2="120" />
+  <!-- Side Turrets / Minarets -->
+  <path d="M22 120 L22 45 L32 45 L32 120" />
+  <path d="M128 120 L128 45 L138 45 L138 120" />
+  <!-- Turret caps / domes -->
+  <path d="M20 45 C20 38 34 38 34 45 Z" />
+  <path d="M126 45 C126 38 140 38 140 45 Z" />
+  <!-- Central Archway Pylon Structure -->
+  <path d="M32 120 L32 35 L128 35 L128 120" />
+  <!-- Central Grand Arch -->
+  <path d="M52 120 L52 75 C52 50 108 50 108 75 L108 120" />
+  <!-- Central Dome -->
+  <path d="M62 35 C62 16 98 16 98 35 Z" />
+  <!-- Architectural molding -->
+  <line x1="32" y1="42" x2="128" y2="42" />
+  <line x1="42" y1="120" x2="42" y2="60" />
+  <line x1="118" y1="120" x2="118" y2="60" />
+</svg>
