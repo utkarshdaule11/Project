@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <defs>
+    <filter id="roadShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#1F3A6B" floodOpacity="0.15" />
+    </filter>
+    <filter id="needleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="6" stdDeviation="6" floodColor="#1F3A6B" floodOpacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="800" height="600" rx="24" fill="#E6F4FA" />
+
+  <!-- Compass Outer Bezel -->
+  <g transform="translate(400, 300)">
+    <!-- Outer decorative ring -->
+    <circle r="180" fill="none" stroke="#5CC8D7" stroke-width="4" stroke-opacity="0.5" />
+    <circle r="165" fill="#FFFFFF" stroke="#1CA7B8" stroke-width="6" />
+
+    <!-- Degree Markings and Ticks -->
+    <circle r="148" fill="none" stroke="#1F3A6B" stroke-width="1.5" stroke-dasharray="2 10" stroke-opacity="0.3" />
+    <circle r="135" fill="#F2F9FD" stroke="#1CA7B8" stroke-width="1" stroke-opacity="0.3" />
+
+    <!-- Cardinal Direction Marks -->
+    <!-- North -->
+    <line x1="0" y1="-165" x2="0" y2="-140" stroke="#F59A4B" stroke-width="4" stroke-linecap="round" />
+    <text x="0" y="-120" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="800" fill="#F59A4B">N</text>
+
+    <!-- South -->
+    <line x1="0" y1="140" x2="0" y2="165" stroke="#1F3A6B" stroke-width="3" stroke-linecap="round" />
+    <text x="0" y="130" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#1F3A6B">S</text>
+
+    <!-- East -->
+    <line x1="140" y1="0" x2="165" y2="0" stroke="#1F3A6B" stroke-width="3" stroke-linecap="round" />
+    <text x="122" y="5" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#1F3A6B">E</text>
+
+    <!-- West -->
+    <line x1="-165" y1="0" x2="-140" y2="0" stroke="#1F3A6B" stroke-width="3" stroke-linecap="round" />
+    <text x="-122" y="5" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" fill="#1F3A6B">W</text>
+
+    <!-- 8-Point Compass Star Rays (Subtle background) -->
+    <polygon points="0,-130 18,-30 0,-15 -18,-30" fill="#5CC8D7" fill-opacity="0.25" />
+    <polygon points="0,130 18,30 0,15 -18,30" fill="#1F3A6B" fill-opacity="0.15" />
+    <polygon points="130,0 30,18 15,0 30,-18" fill="#1CA7B8" fill-opacity="0.2" />
+    <polygon points="-130,0 -30,18 -15,0 -30,-18" fill="#1CA7B8" fill-opacity="0.2" />
+
+    <!-- 3D Compass Needle (Rotated at 25 degrees) -->
+    <g transform="rotate(25)" filter="url(#needleShadow)">
+      <!-- North Needle (Saffron) -->
+      <polygon points="0,-115 16,-10 0,0" fill="#F59A4B" />
+      <polygon points="0,-115 -16,-10 0,0" fill="#EA8B38" />
+
+      <!-- South Needle (Navy) -->
+      <polygon points="0,115 16,10 0,0" fill="#1F3A6B" />
+      <polygon points="0,115 -16,10 0,0" fill="#162A4E" />
+
+      <!-- Center Pivot Pin -->
+      <circle r="14" fill="#FFFFFF" stroke="#1CA7B8" stroke-width="3" />
+      <circle r="6" fill="#F59A4B" />
+    </g>
+  </g>
+
+  <!-- Winding 3D Road Ribbon across the Compass -->
+  <g filter="url(#roadShadow)">
+    <!-- Road Base Ribbon (Softened Saffron) -->
+    <path
+      d="M 60,480 C 220,520 280,360 410,310 C 530,260 620,160 740,110"
+      fill="none"
+      stroke="#F59A4B"
+      stroke-width="28"
+      stroke-linecap="round"
+    />
+    <!-- Road Inner Border -->
+    <path
+      d="M 60,480 C 220,520 280,360 410,310 C 530,260 620,160 740,110"
+      fill="none"
+      stroke="#1CA7B8"
+      stroke-width="32"
+      stroke-linecap="round"
+      stroke-opacity="0.2"
+    />
+    <!-- Road Center Dashed Line (White) -->
+    <path
+      d="M 60,480 C 220,520 280,360 410,310 C 530,260 620,160 740,110"
+      fill="none"
+      stroke="#FFFFFF"
+      stroke-width="3"
+      stroke-dasharray="10 12"
+      stroke-linecap="round"
+    />
+
+    <!-- Road Milestone Waypoint Markers -->
+    <g transform="translate(180, 470)">
+      <circle r="10" fill="#3E9B6A" stroke="#FFFFFF" stroke-width="2" />
+      <circle r="4" fill="#FFFFFF" />
+    </g>
+    <g transform="translate(410, 310)">
+      <circle r="12" fill="#1CA7B8" stroke="#FFFFFF" stroke-width="2.5" />
+      <circle r="5" fill="#FFFFFF" />
+    </g>
+    <g transform="translate(630, 160)">
+      <circle r="10" fill="#F59A4B" stroke="#FFFFFF" stroke-width="2" />
+      <circle r="4" fill="#FFFFFF" />
+    </g>
+  </g>
+</svg>
