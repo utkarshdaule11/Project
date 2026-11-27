@@ -18,3 +18,25 @@ yarn-error.log*
 # System Files
 .DS_Store
 Thumbs.db
+
+# TypeScript
+*.tsbuildinfo
+
+# Raw OSM API response cache
+data/raw_osm/
+
+# Intermediate GIS processing artifacts
+data/nh44/nh44-route-candidate.geojson
+data/nh44/nh44-direction-audit.json
+data/nh44/nh44-route-source-ways.json
+
+# Ephemeral QA output files
+data/browser_qa_results.json
+data/nh44_osm_validation_report.json
+data/step3_qa_results.json
+data/step4_qa_results.json
+
+# Local browser profile and scratch screenshot
+temp_profile/
+docs/screenshots/test_local.png
+
