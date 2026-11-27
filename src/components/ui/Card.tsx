@@ -12,12 +12,12 @@ export function Card({
   hoverEffect = false,
 }: CardProps) {
   const hoverClass = hoverEffect
-    ? "transition-all duration-200 hover:-translate-y-1 hover:shadow-md"
+    ? "transition-all duration-300 hover:-translate-y-1 hover:border-[#E9A15C] hover:shadow-2xl"
     : "";
 
   return (
     <div
-      className={`rounded-2xl border border-border bg-surface p-6 shadow-sm ${hoverClass} ${className}`}
+      className={`rounded-2xl border border-[#D9B88F]/20 bg-[#101F2E] p-6 shadow-xl ${hoverClass} ${className}`}
     >
       {children}
     </div>

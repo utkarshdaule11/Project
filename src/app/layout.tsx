@@ -1,12 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import dynamic from "next/dynamic";
 import { Playfair_Display, Inter } from "next/font/google";
 import "./globals.css";
-
-const IntroSequence = dynamic(
-  () => import("@/components/intro/IntroSequence").then((mod) => mod.IntroSequence),
-  { ssr: false }
-);
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -21,7 +15,7 @@ const inter = Inter({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#E6F4FA",
+  themeColor: "#091522",
   width: "device-width",
   initialScale: 1,
 };
@@ -29,32 +23,34 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://grand-bharat-highway.vercel.app"),
   title: {
-    default: "The Grand Bharat Highway | Kashmir to Kanyakumari Expedition",
+    default: "The Grand Bharat Highway | Kashmir to Kanyakumari (NH44)",
     template: "%s | The Grand Bharat Highway",
   },
   description:
-    "An interactive scroll-driven road trip across 6 historic Indian states along NH 44 from Srinagar down to Kanyakumari.",
+    "An interactive, cinematic road expedition across India's premier 3,810 KM national corridor (NH44) from Srinagar in the Himalaya down to Kanyakumari.",
   keywords: [
     "India Road Trip",
-    "Route 66 India",
+    "Grand Bharat Highway",
     "Kashmir to Kanyakumari",
     "NH 44",
+    "National Highway 44",
+    "Expedition Route 66 India",
     "Interactive Highway Map",
-    "Subcontinental Expedition",
+    "Srinagar to Kanyakumari",
   ],
   authors: [{ name: "The Grand Bharat Highway" }],
   openGraph: {
-    title: "The Grand Bharat Highway | Kashmir to Kanyakumari Expedition",
+    title: "The Grand Bharat Highway | Kashmir to Kanyakumari (NH44)",
     description:
-      "An interactive scroll-driven road trip across 6 historic Indian states along NH 44 from Srinagar down to Kanyakumari.",
+      "An interactive, cinematic road expedition across India's premier 3,810 KM national corridor (NH44) from Srinagar down to Kanyakumari.",
     url: "https://grand-bharat-highway.vercel.app",
     siteName: "The Grand Bharat Highway",
     images: [
       {
-        url: "/images/hero-compass-fallback.svg",
+        url: "https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=1200&q=85",
         width: 1200,
         height: 630,
-        alt: "The Grand Bharat Highway - Kashmir to Kanyakumari Route Map and Compass",
+        alt: "The Grand Bharat Highway - Kashmir to Kanyakumari NH44 Corridor Expedition",
       },
     ],
     locale: "en_IN",
@@ -62,10 +58,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Grand Bharat Highway | Kashmir to Kanyakumari Expedition",
+    title: "The Grand Bharat Highway | Kashmir to Kanyakumari (NH44)",
     description:
-      "An interactive scroll-driven road trip across 6 historic Indian states along NH 44 from Srinagar down to Kanyakumari.",
-    images: ["/images/hero-compass-fallback.svg"],
+      "An interactive, cinematic road expedition across India's premier 3,810 KM national corridor (NH44) from Srinagar down to Kanyakumari.",
+    images: ["https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=1200&q=85"],
   },
   icons: {
     icon: "/icon.svg",
@@ -79,16 +75,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `try{if(!sessionStorage.getItem('bharat_highway_intro_v1')){document.documentElement.classList.add('intro-pending');}}catch(e){}`,
-          }}
-        />
-      </head>
-      <body className="min-h-screen bg-background font-sans text-text antialiased">
-        <IntroSequence />
-        <div id="main-content" className="transition-opacity duration-500">
+      <body className="min-h-screen bg-[#091522] font-sans text-[#F2EBDD] antialiased">
+        <div id="main-content">
           {children}
         </div>
       </body>
