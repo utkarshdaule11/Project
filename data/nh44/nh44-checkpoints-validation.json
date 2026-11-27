@@ -1,0 +1,851 @@
+{
+  "validationDate": "2026-11-25T13:52:22.623Z",
+  "crs": "WGS84 Geographic 2D (EPSG:4326) / Metric Geodesic Point-to-Segment Projection",
+  "totalCheckpoints": 14,
+  "officialCorridorBenchmarkKm": 3810,
+  "extractedPhysicalHighwayKm": 3613.83,
+  "results": [
+    {
+      "index": 1,
+      "checkpointId": "srinagar",
+      "name": "Srinagar",
+      "jurisdiction": "Jammu & Kashmir",
+      "cityCentroid": {
+        "latitude": 34.0837,
+        "longitude": 74.7973
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 34.035712,
+          "longitude": 74.860096
+        },
+        "offsetMeters": 7870,
+        "offsetKm": 7.87,
+        "segmentVertexIndex": 0,
+        "segmentInterpolationParameterT": 0,
+        "segmentStartVertex": [
+          74.8600958,
+          34.0357121
+        ],
+        "segmentEndVertex": [
+          74.8602413,
+          34.035746
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 633887287,
+        "relationId": 5794209,
+        "highway": "motorway",
+        "ref": "NH44",
+        "name": "Pampore Bypass",
+        "oneway": "yes"
+      },
+      "classification": "urban-outer-ring (5-10km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 0
+    },
+    {
+      "index": 2,
+      "checkpointId": "jalandhar",
+      "name": "Jalandhar",
+      "jurisdiction": "Punjab",
+      "cityCentroid": {
+        "latitude": 31.326,
+        "longitude": 75.5762
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 31.35206,
+          "longitude": 75.594532
+        },
+        "offsetMeters": 3380.6,
+        "offsetKm": 3.38,
+        "segmentVertexIndex": 8328,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          75.5946134,
+          31.3522726
+        ],
+        "segmentEndVertex": [
+          75.5945323,
+          31.3520604
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 122412293,
+        "relationId": 5794229,
+        "highway": "trunk_link",
+        "ref": "NH44",
+        "name": null,
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 451.14
+    },
+    {
+      "index": 3,
+      "checkpointId": "ludhiana",
+      "name": "Ludhiana",
+      "jurisdiction": "Punjab",
+      "cityCentroid": {
+        "latitude": 30.901,
+        "longitude": 75.8573
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 30.908087,
+          "longitude": 75.880669
+        },
+        "offsetMeters": 2364.8,
+        "offsetKm": 2.36,
+        "segmentVertexIndex": 8921,
+        "segmentInterpolationParameterT": 0.3561,
+        "segmentStartVertex": [
+          75.8797386,
+          30.9103454
+        ],
+        "segmentEndVertex": [
+          75.8823515,
+          30.9040025
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 772753753,
+        "relationId": 5794229,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Sher Shah Suri Marg - GT Road",
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 515.12
+    },
+    {
+      "index": 4,
+      "checkpointId": "ambala",
+      "name": "Ambala",
+      "jurisdiction": "Haryana",
+      "cityCentroid": {
+        "latitude": 30.3782,
+        "longitude": 76.7767
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 30.385998,
+          "longitude": 76.784655
+        },
+        "offsetMeters": 1155.1,
+        "offsetKm": 1.16,
+        "segmentVertexIndex": 9485,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          76.784711,
+          30.3861404
+        ],
+        "segmentEndVertex": [
+          76.7846554,
+          30.3859981
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 169357571,
+        "relationId": 5794309,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Grand Trunk Road",
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 621.02
+    },
+    {
+      "index": 5,
+      "checkpointId": "delhi",
+      "name": "Delhi",
+      "jurisdiction": "NCT of Delhi",
+      "cityCentroid": {
+        "latitude": 28.6139,
+        "longitude": 77.209
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 28.622985,
+          "longitude": 77.24762
+        },
+        "offsetMeters": 3902.7,
+        "offsetKm": 3.9,
+        "segmentVertexIndex": 11039,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          77.2477843,
+          28.6229474
+        ],
+        "segmentEndVertex": [
+          77.24762,
+          28.6229855
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 70220642,
+        "relationId": 5795969,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Mahatma Gandhi Marg",
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 832.56
+    },
+    {
+      "index": 6,
+      "checkpointId": "gwalior",
+      "name": "Gwalior",
+      "jurisdiction": "Madhya Pradesh",
+      "cityCentroid": {
+        "latitude": 26.2183,
+        "longitude": 78.1828
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 26.191117,
+          "longitude": 78.234721
+        },
+        "offsetMeters": 5997.3,
+        "offsetKm": 6,
+        "segmentVertexIndex": 14827,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          78.2349354,
+          26.1911943
+        ],
+        "segmentEndVertex": [
+          78.2347208,
+          26.1911173
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 380926999,
+        "relationId": 5802971,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Gwalior Bypass",
+        "oneway": "yes"
+      },
+      "classification": "urban-outer-ring (5-10km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 1164.63
+    },
+    {
+      "index": 7,
+      "checkpointId": "jhansi",
+      "name": "Jhansi",
+      "jurisdiction": "Uttar Pradesh",
+      "cityCentroid": {
+        "latitude": 25.4484,
+        "longitude": 78.5685
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 25.474552,
+          "longitude": 78.543084
+        },
+        "offsetMeters": 3868.7,
+        "offsetKm": 3.87,
+        "segmentVertexIndex": 15879,
+        "segmentInterpolationParameterT": 0.2073,
+        "segmentStartVertex": [
+          78.5433747,
+          25.4747815
+        ],
+        "segmentEndVertex": [
+          78.5419737,
+          25.4736718
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 931310783,
+        "relationId": 5803022,
+        "highway": "trunk",
+        "ref": "NH27;NH44",
+        "name": null,
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 1258.34
+    },
+    {
+      "index": 8,
+      "checkpointId": "nagpur",
+      "name": "Nagpur",
+      "jurisdiction": "Maharashtra",
+      "cityCentroid": {
+        "latitude": 21.1458,
+        "longitude": 79.0882
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 21.069151,
+          "longitude": 79.132103
+        },
+        "offsetMeters": 9663.5,
+        "offsetKm": 9.66,
+        "segmentVertexIndex": 22809,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          79.1321716,
+          21.0690461
+        ],
+        "segmentEndVertex": [
+          79.1321035,
+          21.0691507
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 262741103,
+        "relationId": 5803131,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Outer Ring Road",
+        "oneway": "yes"
+      },
+      "classification": "urban-outer-ring (5-10km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 1873.83
+    },
+    {
+      "index": 9,
+      "checkpointId": "hyderabad",
+      "name": "Hyderabad",
+      "jurisdiction": "Telangana",
+      "cityCentroid": {
+        "latitude": 17.385,
+        "longitude": 78.4867
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 17.383783,
+          "longitude": 78.475248
+        },
+        "offsetMeters": 1222.7,
+        "offsetKm": 1.22,
+        "segmentVertexIndex": 28441,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          78.4750581,
+          17.3839014
+        ],
+        "segmentEndVertex": [
+          78.4752484,
+          17.3837827
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 313212113,
+        "relationId": 5803164,
+        "highway": "trunk",
+        "ref": "NH44;NH65;NH163",
+        "name": "Mukharam Jahi Road",
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 2369.72
+    },
+    {
+      "index": 10,
+      "checkpointId": "bangalore",
+      "name": "Bangalore",
+      "jurisdiction": "Karnataka",
+      "cityCentroid": {
+        "latitude": 12.9716,
+        "longitude": 77.5946
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 12.917395,
+          "longitude": 77.622926
+        },
+        "offsetMeters": 6763.9,
+        "offsetKm": 6.76,
+        "segmentVertexIndex": 34999,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          77.623148,
+          12.9174482
+        ],
+        "segmentEndVertex": [
+          77.6229259,
+          12.9173954
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 1073384217,
+        "relationId": 5878728,
+        "highway": "trunk",
+        "ref": "NH44;NH48",
+        "name": "Outer Ring Road",
+        "oneway": "yes"
+      },
+      "classification": "urban-outer-ring (5-10km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 2957.62
+    },
+    {
+      "index": 11,
+      "checkpointId": "salem",
+      "name": "Salem",
+      "jurisdiction": "Tamil Nadu",
+      "cityCentroid": {
+        "latitude": 11.6643,
+        "longitude": 78.146
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 11.672023,
+          "longitude": 78.127424
+        },
+        "offsetMeters": 2197.6,
+        "offsetKm": 2.2,
+        "segmentVertexIndex": 38135,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          78.1275641,
+          11.6724135
+        ],
+        "segmentEndVertex": [
+          78.1274237,
+          11.6720232
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 101252198,
+        "relationId": 5803261,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": null,
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 3149.07
+    },
+    {
+      "index": 12,
+      "checkpointId": "namakkal",
+      "name": "Namakkal",
+      "jurisdiction": "Tamil Nadu",
+      "cityCentroid": {
+        "latitude": 11.2189,
+        "longitude": 78.1674
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 11.235156,
+          "longitude": 78.139803
+        },
+        "offsetMeters": 3511,
+        "offsetKm": 3.51,
+        "segmentVertexIndex": 38778,
+        "segmentInterpolationParameterT": 0.0096,
+        "segmentStartVertex": [
+          78.1398135,
+          11.235173
+        ],
+        "segmentEndVertex": [
+          78.1387095,
+          11.2333699
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 625739019,
+        "relationId": 5803261,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Kanyakumari Varanasi",
+        "oneway": "yes"
+      },
+      "classification": "corridor-bypass (1-5km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 3202.05
+    },
+    {
+      "index": 13,
+      "checkpointId": "madurai",
+      "name": "Madurai",
+      "jurisdiction": "Tamil Nadu",
+      "cityCentroid": {
+        "latitude": 9.9252,
+        "longitude": 78.1198
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 9.937635,
+          "longitude": 78.058779
+        },
+        "offsetMeters": 6825.1,
+        "offsetKm": 6.83,
+        "segmentVertexIndex": 40576,
+        "segmentInterpolationParameterT": 1,
+        "segmentStartVertex": [
+          78.0588644,
+          9.9380944
+        ],
+        "segmentEndVertex": [
+          78.0587786,
+          9.9376346
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 239950067,
+        "relationId": 5803261,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": null,
+        "oneway": "yes"
+      },
+      "classification": "urban-outer-ring (5-10km)",
+      "matchingConfidence": "HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 3377.39
+    },
+    {
+      "index": 14,
+      "checkpointId": "kanyakumari",
+      "name": "Kanyakumari",
+      "jurisdiction": "Tamil Nadu",
+      "cityCentroid": {
+        "latitude": 8.0883,
+        "longitude": 77.5385
+      },
+      "orthogonalProjection": {
+        "snappedPoint": {
+          "latitude": 8.088303,
+          "longitude": 77.538447
+        },
+        "offsetMeters": 5.8,
+        "offsetKm": 0.01,
+        "segmentVertexIndex": 43087,
+        "segmentInterpolationParameterT": 0.5777,
+        "segmentStartVertex": [
+          77.5384839,
+          8.0888734
+        ],
+        "segmentEndVertex": [
+          77.5384208,
+          8.0878865
+        ]
+      },
+      "sourceWayProvenance": {
+        "matchedWayId": 157804920,
+        "relationId": 5803261,
+        "highway": "trunk",
+        "ref": "NH44",
+        "name": "Salem - Kochi - Kanyakumari Road",
+        "oneway": "yes"
+      },
+      "classification": "terminal-anchor (<100m)",
+      "matchingConfidence": "VERY_HIGH",
+      "crsMetadata": {
+        "sourceCRS": "EPSG:4326 (WGS84 2D Geographic)",
+        "units": "Decimal degrees [longitude, latitude]",
+        "geodesicMethod": "Local Midpoint Conformal Tangent Projection with WGS84 Great-Circle Metric Distance",
+        "projectedCRSNote": "EPSG:4326 is an unprojected geographic CRS. All orthogonal distance computations were transformed to metric lengths using WGS84 ellipsoidal geometry (mean radius R=6371008.8m)."
+      },
+      "cumulativeRouteKm": 3613.79
+    }
+  ],
+  "legs": [
+    {
+      "legNumber": 1,
+      "from": "Srinagar",
+      "to": "Jalandhar",
+      "fromNode": 10207059581,
+      "toNode": 10151766274,
+      "lengthKm": 451.141,
+      "cumulativeKm": 451.141,
+      "nodeCount": 8330,
+      "edgeCount": 8329
+    },
+    {
+      "legNumber": 2,
+      "from": "Jalandhar",
+      "to": "Ludhiana",
+      "fromNode": 10151766274,
+      "toNode": 7214631685,
+      "lengthKm": 63.699,
+      "cumulativeKm": 514.84,
+      "nodeCount": 592,
+      "edgeCount": 591
+    },
+    {
+      "legNumber": 3,
+      "from": "Ludhiana",
+      "to": "Ambala",
+      "fromNode": 7214631685,
+      "toNode": 1880661435,
+      "lengthKm": 106.184,
+      "cumulativeKm": 621.024,
+      "nodeCount": 567,
+      "edgeCount": 566
+    },
+    {
+      "legNumber": 4,
+      "from": "Ambala",
+      "to": "Delhi",
+      "fromNode": 1880661435,
+      "toNode": 1665802579,
+      "lengthKm": 211.538,
+      "cumulativeKm": 832.561,
+      "nodeCount": 1555,
+      "edgeCount": 1554
+    },
+    {
+      "legNumber": 5,
+      "from": "Delhi",
+      "to": "Gwalior",
+      "fromNode": 1665802579,
+      "toNode": 3842215977,
+      "lengthKm": 332.07,
+      "cumulativeKm": 1164.631,
+      "nodeCount": 3789,
+      "edgeCount": 3788
+    },
+    {
+      "legNumber": 6,
+      "from": "Gwalior",
+      "to": "Jhansi",
+      "fromNode": 3842215977,
+      "toNode": 2156689705,
+      "lengthKm": 93.638,
+      "cumulativeKm": 1258.27,
+      "nodeCount": 1051,
+      "edgeCount": 1050
+    },
+    {
+      "legNumber": 7,
+      "from": "Jhansi",
+      "to": "Nagpur",
+      "fromNode": 2156689705,
+      "toNode": 2241091385,
+      "lengthKm": 615.563,
+      "cumulativeKm": 1873.833,
+      "nodeCount": 6933,
+      "edgeCount": 6932
+    },
+    {
+      "legNumber": 8,
+      "from": "Nagpur",
+      "to": "Hyderabad",
+      "fromNode": 2241091385,
+      "toNode": 3215426731,
+      "lengthKm": 495.887,
+      "cumulativeKm": 2369.72,
+      "nodeCount": 5633,
+      "edgeCount": 5632
+    },
+    {
+      "legNumber": 9,
+      "from": "Hyderabad",
+      "to": "Bangalore",
+      "fromNode": 3215426731,
+      "toNode": 3805003790,
+      "lengthKm": 587.895,
+      "cumulativeKm": 2957.616,
+      "nodeCount": 6559,
+      "edgeCount": 6558
+    },
+    {
+      "legNumber": 10,
+      "from": "Bangalore",
+      "to": "Salem",
+      "fromNode": 3805003790,
+      "toNode": 1752686792,
+      "lengthKm": 191.456,
+      "cumulativeKm": 3149.072,
+      "nodeCount": 3137,
+      "edgeCount": 3136
+    },
+    {
+      "legNumber": 11,
+      "from": "Salem",
+      "to": "Namakkal",
+      "fromNode": 1752686792,
+      "toNode": 2074105060,
+      "lengthKm": 52.973,
+      "cumulativeKm": 3202.044,
+      "nodeCount": 643,
+      "edgeCount": 642
+    },
+    {
+      "legNumber": 12,
+      "from": "Namakkal",
+      "to": "Madurai",
+      "fromNode": 2074105060,
+      "toNode": 2004083448,
+      "lengthKm": 175.345,
+      "cumulativeKm": 3377.389,
+      "nodeCount": 1800,
+      "edgeCount": 1799
+    },
+    {
+      "legNumber": 13,
+      "from": "Madurai",
+      "to": "Kanyakumari",
+      "fromNode": 2004083448,
+      "toNode": 1700570015,
+      "lengthKm": 236.444,
+      "cumulativeKm": 3613.833,
+      "nodeCount": 2512,
+      "edgeCount": 2511
+    }
+  ],
+  "documentedGaps": [
+    {
+      "name": "Banihal_Tunnel_portal_JK",
+      "description": "Transition between historic alignment approach and Navyug Tunnel portal",
+      "u": 5459979257,
+      "v": 2389831547,
+      "latU": 33.6111429,
+      "lonU": 75.1486038,
+      "latV": 33.6099321,
+      "lonV": 75.149082,
+      "distKm": 0.14173,
+      "distMeters": 141.73,
+      "jurisdiction": "Jammu & Kashmir"
+    },
+    {
+      "name": "Ramban_Chenab_omission_JK",
+      "description": "Chenab Valley four-laning realignment gap where OSM relation omitted under-construction sector",
+      "u": 14093730923,
+      "v": 2477285466,
+      "latU": 33.1577771,
+      "lonU": 75.3080757,
+      "latV": 33.1515903,
+      "lonV": 75.3059317,
+      "distKm": 0.71631,
+      "distMeters": 716.31,
+      "jurisdiction": "Jammu & Kashmir"
+    },
+    {
+      "name": "Farah_Mathura_split_UP",
+      "description": "Dual carriageway grade-separated culvert transition near Farah",
+      "u": 6297315853,
+      "v": 9003040356,
+      "latU": 27.275887,
+      "lonU": 77.8037002,
+      "latV": 27.2733669,
+      "lonV": 77.8058258,
+      "distKm": 0.35023,
+      "distMeters": 350.23,
+      "jurisdiction": "Uttar Pradesh"
+    },
+    {
+      "name": "Agra_Bypass_Rohta_split_UP",
+      "description": "Agra Inner Ring Road interchange ramp gap connecting back to NH44 mainline",
+      "u": 4389191166,
+      "v": 4235553521,
+      "latU": 27.0659797,
+      "lonU": 77.9707714,
+      "latV": 27.0663689,
+      "lonV": 77.9772272,
+      "distKm": 0.6407,
+      "distMeters": 640.7,
+      "jurisdiction": "Uttar Pradesh"
+    },
+    {
+      "name": "Electronic_City_toll_ramp_KA",
+      "description": "Bangalore Electronic City elevated tollway interchange ramp junction",
+      "u": 11383273877,
+      "v": 9869643728,
+      "latU": 12.8408935,
+      "lonU": 77.6764023,
+      "latV": 12.8399814,
+      "lonV": 77.6770412,
+      "distKm": 0.12312,
+      "distMeters": 123.12,
+      "jurisdiction": "Karnataka"
+    }
+  ]
+}

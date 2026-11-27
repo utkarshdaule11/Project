@@ -1,0 +1,283 @@
+{
+  "metadataVersion": "1.0.0",
+  "generatedAt": "2026-11-25T18:58:33.006Z",
+  "corridorName": "The Grand Bharat Highway (NH44)",
+  "officialMoRTHCorridorLengthKm": 3810,
+  "authoritativeGeometryType": "MultiLineString",
+  "osmProvenance": {
+    "masterRelationId": 11568320,
+    "masterRelationName": "National Highway 44 (India)",
+    "childRelationsCount": 13,
+    "totalSourceWaysTraceable": 4024,
+    "attribution": "Map data © OpenStreetMap contributors, ODbL 1.0",
+    "licence": "Open Database License (ODbL)"
+  },
+  "simplificationSummary": {
+    "algorithm": "Ramer-Douglas-Peucker (RDP) on Midpoint Local Conformal Metric Projection",
+    "pinnedPointsPolicy": "All section endpoints and 14 checkpoint orthogonal projection anchors are pinned and strictly excluded from RDP removal.",
+    "gapHandlingPolicy": "Each of the 5 MultiLineString sections is simplified in complete isolation; no simplification or interpolation occurs across the 4 verified structural gaps."
+  },
+  "levels": [
+    {
+      "lod": 0,
+      "filename": "nh44-route-lod0.geojson",
+      "targetVertices": 43089,
+      "actualVertices": 43089,
+      "toleranceMeters": 0,
+      "reductionPercent": 0,
+      "totalLengthKm": 3612.21,
+      "lengthDeltaKm": 0,
+      "maxDeviationMeters": 0,
+      "avgDeviationMeters": 0,
+      "payloadSizes": {
+        "rawBytes": 3436476,
+        "rawKb": 3355.9,
+        "rawMb": 3.28,
+        "gzipBytes": 394299,
+        "gzipKb": 385.1,
+        "gzipMb": 0.38
+      },
+      "sectionVertexCounts": [
+        578,
+        1817,
+        11090,
+        21630,
+        7974
+      ]
+    },
+    {
+      "lod": 1,
+      "filename": "nh44-route-lod1.geojson",
+      "targetVertices": 4000,
+      "actualVertices": 4032,
+      "toleranceMeters": 30,
+      "reductionPercent": 90.6,
+      "totalLengthKm": 3603.56,
+      "lengthDeltaKm": -8.65,
+      "maxDeviationMeters": 29.99,
+      "avgDeviationMeters": 7.58,
+      "payloadSizes": {
+        "rawBytes": 322731,
+        "rawKb": 315.2,
+        "rawMb": 0.31,
+        "gzipBytes": 42312,
+        "gzipKb": 41.3,
+        "gzipMb": 0.04
+      },
+      "sectionVertexCounts": [
+        74,
+        200,
+        845,
+        2090,
+        823
+      ]
+    },
+    {
+      "lod": 2,
+      "filename": "nh44-route-lod2.geojson",
+      "targetVertices": 600,
+      "actualVertices": 593,
+      "toleranceMeters": 580,
+      "reductionPercent": 98.6,
+      "totalLengthKm": 3528.27,
+      "lengthDeltaKm": -83.94,
+      "maxDeviationMeters": 579.63,
+      "avgDeviationMeters": 135.55,
+      "payloadSizes": {
+        "rawBytes": 48664,
+        "rawKb": 47.5,
+        "rawMb": 0.05,
+        "gzipBytes": 7680,
+        "gzipKb": 7.5,
+        "gzipMb": 0.01
+      },
+      "sectionVertexCounts": [
+        11,
+        17,
+        123,
+        334,
+        108
+      ]
+    }
+  ],
+  "structuralGapsPreserved": [
+    {
+      "gapId": "gap-1-banihal-tunnel",
+      "name": "Banihal Tunnel Portal",
+      "distanceMeters": 141.73,
+      "jurisdiction": "Jammu & Kashmir",
+      "preservedAsSectionBreak": true
+    },
+    {
+      "gapId": "gap-2-ramban-chenab",
+      "name": "Ramban Chenab Realignment",
+      "distanceMeters": 716.31,
+      "jurisdiction": "Jammu & Kashmir",
+      "preservedAsSectionBreak": true
+    },
+    {
+      "gapId": "gap-3-farah-culvert",
+      "name": "Farah Grade Separation",
+      "distanceMeters": 350.23,
+      "jurisdiction": "Uttar Pradesh",
+      "preservedAsSectionBreak": true
+    },
+    {
+      "gapId": "gap-4-agra-ring-road",
+      "name": "Agra Bypass Interchange",
+      "distanceMeters": 640.7,
+      "jurisdiction": "Uttar Pradesh",
+      "preservedAsSectionBreak": true
+    },
+    {
+      "gapId": "gap-5-electronic-city",
+      "name": "Electronic City Toll Ramp",
+      "distanceMeters": 123.12,
+      "jurisdiction": "Karnataka",
+      "preservedAsSectionBreak": true
+    }
+  ],
+  "directionalAnomaliesPreservedInMetadata": 12,
+  "checkpointsValidation": [
+    {
+      "checkpointId": "srinagar",
+      "name": "Srinagar",
+      "jurisdiction": "Jammu & Kashmir",
+      "orthogonalOffsetLOD0Meters": 0.02,
+      "orthogonalOffsetLOD1Meters": 0.01,
+      "orthogonalOffsetLOD2Meters": 0,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "jalandhar",
+      "name": "Jalandhar",
+      "jurisdiction": "Punjab",
+      "orthogonalOffsetLOD0Meters": 0.05,
+      "orthogonalOffsetLOD1Meters": 0.05,
+      "orthogonalOffsetLOD2Meters": 0.05,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "ludhiana",
+      "name": "Ludhiana",
+      "jurisdiction": "Punjab",
+      "orthogonalOffsetLOD0Meters": 0.01,
+      "orthogonalOffsetLOD1Meters": 2.07,
+      "orthogonalOffsetLOD2Meters": 39.22,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "ambala",
+      "name": "Ambala",
+      "jurisdiction": "Haryana",
+      "orthogonalOffsetLOD0Meters": 0.04,
+      "orthogonalOffsetLOD1Meters": 0.03,
+      "orthogonalOffsetLOD2Meters": 0.03,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "delhi",
+      "name": "Delhi",
+      "jurisdiction": "NCT of Delhi",
+      "orthogonalOffsetLOD0Meters": 0.05,
+      "orthogonalOffsetLOD1Meters": 0.02,
+      "orthogonalOffsetLOD2Meters": 0.02,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "gwalior",
+      "name": "Gwalior",
+      "jurisdiction": "Madhya Pradesh",
+      "orthogonalOffsetLOD0Meters": 0.04,
+      "orthogonalOffsetLOD1Meters": 0.03,
+      "orthogonalOffsetLOD2Meters": 0.03,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "jhansi",
+      "name": "Jhansi",
+      "jurisdiction": "Uttar Pradesh",
+      "orthogonalOffsetLOD0Meters": 0.06,
+      "orthogonalOffsetLOD1Meters": 0.01,
+      "orthogonalOffsetLOD2Meters": 3.84,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "nagpur",
+      "name": "Nagpur",
+      "jurisdiction": "Maharashtra",
+      "orthogonalOffsetLOD0Meters": 0.06,
+      "orthogonalOffsetLOD1Meters": 0.05,
+      "orthogonalOffsetLOD2Meters": 0.06,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "hyderabad",
+      "name": "Hyderabad",
+      "jurisdiction": "Telangana",
+      "orthogonalOffsetLOD0Meters": 0,
+      "orthogonalOffsetLOD1Meters": 0.01,
+      "orthogonalOffsetLOD2Meters": 0.03,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "bangalore",
+      "name": "Bangalore",
+      "jurisdiction": "Karnataka",
+      "orthogonalOffsetLOD0Meters": 0.02,
+      "orthogonalOffsetLOD1Meters": 0.01,
+      "orthogonalOffsetLOD2Meters": 0.02,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "salem",
+      "name": "Salem",
+      "jurisdiction": "Tamil Nadu",
+      "orthogonalOffsetLOD0Meters": 0.04,
+      "orthogonalOffsetLOD1Meters": 0.04,
+      "orthogonalOffsetLOD2Meters": 0.04,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "namakkal",
+      "name": "Namakkal",
+      "jurisdiction": "Tamil Nadu",
+      "orthogonalOffsetLOD0Meters": 0.01,
+      "orthogonalOffsetLOD1Meters": 0,
+      "orthogonalOffsetLOD2Meters": 0.06,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "madurai",
+      "name": "Madurai",
+      "jurisdiction": "Tamil Nadu",
+      "orthogonalOffsetLOD0Meters": 0.04,
+      "orthogonalOffsetLOD1Meters": 0.04,
+      "orthogonalOffsetLOD2Meters": 0.05,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    },
+    {
+      "checkpointId": "kanyakumari",
+      "name": "Kanyakumari",
+      "jurisdiction": "Tamil Nadu",
+      "orthogonalOffsetLOD0Meters": 0.05,
+      "orthogonalOffsetLOD1Meters": 2.24,
+      "orthogonalOffsetLOD2Meters": 5.75,
+      "isAnchorRetainedInLOD1": true,
+      "isAnchorRetainedInLOD2": true
+    }
+  ]
+}

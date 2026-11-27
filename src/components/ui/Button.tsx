@@ -17,23 +17,23 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(function Button
   ref
 ) {
   const baseStyles =
-    "inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed select-none";
+    "inline-flex items-center justify-center font-sans font-semibold rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#E9A15C] focus-visible:ring-offset-2 focus-visible:ring-offset-[#091522] disabled:opacity-50 disabled:cursor-not-allowed select-none";
 
   const sizeStyles = {
     sm: "px-3.5 py-1.5 text-xs tracking-wide",
     md: "px-5 py-2.5 text-sm tracking-wide",
-    lg: "px-7 py-3 text-base tracking-wide",
+    lg: "px-7 py-3.5 text-base tracking-wide font-bold",
   }[size];
 
   const variantStyles = {
     primary:
-      "bg-primary-dark text-white hover:bg-primary shadow-xs hover:shadow-sm",
+      "bg-[#E9A15C] text-[#091522] font-bold hover:bg-[#F2BC85] shadow-md hover:shadow-lg",
     secondary:
-      "bg-surface text-text hover:bg-surface-subtle border border-border shadow-xs",
+      "bg-[#101F2E] text-[#F2EBDD] hover:bg-[#142638] border border-[#D9B88F]/30 shadow-md",
     outline:
-      "border border-primary-dark text-primary-dark hover:bg-primary-dark hover:text-white",
+      "border border-[#D9B88F] text-[#D9B88F] hover:bg-[#D9B88F] hover:text-[#091522]",
     saffron:
-      "bg-accent-saffron text-text font-bold hover:bg-accent-saffron/90 shadow-xs hover:shadow-sm",
+      "bg-[#E9A15C] text-[#091522] font-bold hover:bg-[#F2BC85] shadow-md hover:shadow-lg",
   }[variant];
 
   return (

@@ -3,21 +3,38 @@
 @tailwind utilities;
 
 :root {
-  --background: #E6F4FA;
-  --foreground: #1F3A6B;
+  --background: #091522;
+  --foreground: #F2EBDD;
+  --sandstone: #D9B88F;
+  --saffron: #E9A15C;
+  --charcoal: #101F2E;
+  --forest: #294A3B;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #091522;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
   overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-html.intro-pending #main-content {
-  opacity: 0;
-  pointer-events: none;
+/* Subtle film grain texture */
+.grain-overlay {
+  background-image: radial-gradient(rgba(217, 184, 143, 0.08) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
