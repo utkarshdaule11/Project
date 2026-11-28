@@ -162,3 +162,44 @@ export interface JourneyProgressInfo {
   isTerminus: boolean;
 }
 
+/**
+ * Passport exploration progress summary.
+ * All progress metrics derive their denominator dynamically from states.length.
+ */
+export interface PassportProgressSummary {
+  totalCount: number; // Derived dynamically: states.length
+  exploredCount: number; // Derived: exploredIds.length (0 to states.length)
+  percentComplete: number; // Derived: states.length > 0 ? Math.round((exploredCount / states.length) * 100) : 0
+  isFullyExplored: boolean; // Derived: states.length > 0 && exploredCount === states.length
+  isHydrated: boolean; // true once client-side localStorage read settles
+  lastExploredId: CheckpointId | null;
+}
+
+/**
+ * Unified storage payload stored in localStorage under 'nh44_passport_progress_v1'.
+ * Contains strictly version, IDs, and ISO-8601 timestamp; zero duplicated content.
+ */
+export interface PassportStoragePayload {
+  version: 1;
+  exploredIds: CheckpointId[];
+  lastUpdated: string; // ISO 8601 string
+}
+
+/**
+ * Dynamically derived stamp view-model (never stored statically).
+ */
+export interface DerivedPassportStamp {
+  id: CheckpointId;
+  order: number;
+  name: string;
+  stop: string;
+  morthMilestoneKm: number;
+  projectionReferenceKm: number; // 3,613.79 KM Kanyakumari projection reference
+  elevation: string;
+  zoneId: BiomeId;
+  zoneName: string;
+  hasVerifiedLocalAsset: boolean;
+  isActive: boolean; // Derived: id === activeStopId (from page.tsx)
+  isExplored: boolean; // Derived: exploredIds.includes(id) (from usePassportProgress)
+}
+

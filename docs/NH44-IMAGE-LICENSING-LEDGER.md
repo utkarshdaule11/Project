@@ -106,3 +106,16 @@ Every photographic asset integrated into **The Grand Bharat Highway** is subject
 | **Pilot Assets (Step 1)** | **3** | **Locally Hosted (`/images/nh44/`)** | **Generated & Documented (Not Integrated in StateImage)** | Sourced from Wikimedia Commons, verified in production runtime. Zero external requests strictly for these 3 landmarks. |
 | **Pending Assets (Steps 2–6)** | 26 | External Unsplash URLs | Pending Ingestion | 25 chapter images + 1 Hero background. |
 | **Total Project Imagery** | 29 | **10.3% Local (3 of 29)** | **10.3% Generated (3 of 29)** | Project-wide zero external hotlinks will be achieved progressively across subsequent authorized steps. |
+
+---
+
+## 4. Locally Hosted HD Motion Assets (Opening Intro & Hero)
+
+1. **`public/videos/nh44-dawn-drive.mp4`** (8.89 MB, 720p HD, `moov` faststart)
+   - **Subject:** Driver's-eye golden dawn highway drive curving around sunlit hills.
+   - **Source:** Mixkit (`gliding-along-a-quiet-asphalt-road-at-dawn-the-soft-52452`)
+   - **License:** Mixkit Stock Video Free License (Commercial & Non-Commercial use permitted without attribution).
+2. **`public/videos/nh44-aerial-corridor.mp4`** (3.14 MB, 720p HD, `moov` faststart)
+   - **Subject:** Sweeping aerial view over a lush green divided four-lane highway corridor.
+   - **Source:** Mixkit (`aerial-view-of-a-road-that-crosses-through-nature-41389`)
+   - **License:** Mixkit Stock Video Free License (Commercial & Non-Commercial use permitted without attribution).

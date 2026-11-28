@@ -10,10 +10,18 @@ interface IntroCurtainProps {
   children: React.ReactNode;
 }
 
+/**
+ * Full-screen split curtain (z-[70] so Navbar never clips the intro odometer)
+ */
 export function IntroCurtain({ isExiting, onFinished, children }: IntroCurtainProps) {
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
-      {/* Left Curtain Panel */}
+    <div
+      className="fixed inset-0 z-[70] overflow-hidden"
+      role="dialog"
+      aria-modal="true"
+      aria-label="National Highway 44 Expedition Introduction"
+    >
+      {/* Left Split Curtain Panel */}
       <motion.div
         initial={{ x: "0%" }}
         animate={isExiting ? { x: "-100%" } : { x: "0%" }}
@@ -24,10 +32,10 @@ export function IntroCurtain({ isExiting, onFinished, children }: IntroCurtainPr
         onAnimationComplete={() => {
           if (isExiting) onFinished();
         }}
-        className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-b from-background to-primary-light shadow-2xl z-10"
+        className="absolute top-0 bottom-0 left-0 w-1/2 bg-gradient-to-br from-[#0B2027] via-[#102A33] to-[#173E4B] border-r border-[#F29F3D]/35 shadow-2xl z-10"
       />
 
-      {/* Right Curtain Panel */}
+      {/* Right Split Curtain Panel */}
       <motion.div
         initial={{ x: "0%" }}
         animate={isExiting ? { x: "100%" } : { x: "0%" }}
@@ -35,15 +43,19 @@ export function IntroCurtain({ isExiting, onFinished, children }: IntroCurtainPr
           duration: INTRO_TIMING.curtainSlideDuration,
           ease: INTRO_TIMING.curtainEase,
         }}
-        className="absolute top-0 bottom-0 right-0 w-1/2 bg-gradient-to-b from-background to-primary-light shadow-2xl z-10"
+        className="absolute top-0 bottom-0 right-0 w-1/2 bg-gradient-to-bl from-[#0B2027] via-[#102A33] to-[#173E4B] border-l border-[#F29F3D]/35 shadow-2xl z-10"
       />
 
-      {/* Content Layer (Fades out when curtain splits) */}
+      {/* Sunburst Horizon Glow & Content */}
       <motion.div
         animate={isExiting ? { opacity: 0 } : { opacity: 1 }}
-        transition={{ duration: 0.3 }}
+        transition={{ duration: 0.28 }}
         className="relative z-20 w-full h-full"
       >
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(242,159,61,0.22)_0%,rgba(217,83,56,0.08)_35%,rgba(11,32,39,0)_72%)]"
+        />
         {children}
       </motion.div>
     </div>

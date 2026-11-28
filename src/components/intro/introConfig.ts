@@ -1,34 +1,36 @@
 import { introContent } from "@content/states";
 
 export const INTRO_TIMING = {
-  lineGrowthDuration: 0.8,
-  roadWidenDuration: 0.8,
-  counterStart: 1.0,
-  counterDuration: 2.4,
-  landmarksStart: 1.2,
-  landmarksDuration: 3.6,
-  titleFadeStart: 3.6,
-  autoCurtainDelay: 5.5,
-  curtainSlideDuration: 0.9,
+  lineGrowthDuration: 0.65,
+  roadWidenDuration: 0.6,
+  counterStart: 0.2,
+  counterDuration: 2.0,
+  landmarksStart: 0.35,
+  landmarksDuration: 2.4,
+  titleFadeStart: 1.0,
+  autoCurtainDelay: 14.0,
+  curtainSlideDuration: 0.85,
   curtainEase: [0.65, 0, 0.35, 1] as const,
-  sessionKey: "bharat_highway_intro_v1",
+  sessionKey: "bharat_highway_intro_v2",
 };
 
-export interface LandmarkItem {
-  name: string;
-  src: string;
+export interface RouteMilestoneBadge {
+  km: string;
+  label: string;
+  region: string;
+  tag: string;
 }
 
-export const LEFT_LANDMARKS: LandmarkItem[] = [
-  { name: "Himalayas", src: "/intro/himalaya.svg" },
-  { name: "Statue of Unity", src: "/intro/statue-of-unity.svg" },
-  { name: "Goa Palms", src: "/intro/goa-palm.svg" },
+export const NH44_INTRO_MILESTONES: RouteMilestoneBadge[] = [
+  { km: "0 KM", label: "Srinagar", region: "Pir Panjal", tag: "Alpine Dawn" },
+  { km: "780 KM", label: "Delhi", region: "Alluvial Plains", tag: "Capital Vibes" },
+  { km: "1,630 KM", label: "Nagpur", region: "Zero Mile", tag: "Heart of India" },
+  { km: "2,130 KM", label: "Hyderabad", region: "Deccan Plateau", tag: "Biryani Pit-Stop" },
+  { km: "3,810 KM", label: "Kanyakumari", region: "Three Oceans", tag: "Coastal Finale" },
 ];
 
-export const RIGHT_LANDMARKS: LandmarkItem[] = [
-  { name: "Hawa Mahal", src: "/intro/hawa-mahal.svg" },
-  { name: "Gateway of India", src: "/intro/gateway-of-india.svg" },
-  { name: "Vivekananda Rock", src: "/intro/vivekananda-rock.svg" },
-];
-
-export const INTRO_COPY = introContent;
+export const INTRO_COPY = {
+  ...introContent,
+  startWithAudioLabel: "Start Your Journey",
+  startSilentLabel: "Enter Without Audio",
+};

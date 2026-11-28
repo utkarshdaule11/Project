@@ -35,6 +35,10 @@ data/browser_qa_results.json
 data/nh44_osm_validation_report.json
 data/step3_qa_results.json
 data/step4_qa_results.json
+data/step5_qa_results.json
+
+# IDE settings
+.vscode/
 
 # Local browser profile and scratch screenshot
 temp_profile/

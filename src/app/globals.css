@@ -3,17 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --background: #091522;
-  --foreground: #F2EBDD;
-  --sandstone: #D9B88F;
-  --saffron: #E9A15C;
-  --charcoal: #101F2E;
-  --forest: #294A3B;
+  --background: #FBF7EE;
+  --foreground: #102A33;
+  --parchment: #F6EFE0;
+  --deep-teal: #102A33;
+  --warm-gold: #F29F3D;
+  --terracotta: #D95338;
+  --highway-yellow: #FACC15;
+  --emerald-sign: #1C6E5A;
+  --surface: #FFFFFF;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: #091522;
+  background-color: #FBF7EE;
 }
 
 body {
@@ -23,10 +26,76 @@ body {
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
 }
 
-/* Subtle film grain texture */
+/* Subtle travel atlas paper grain */
 .grain-overlay {
-  background-image: radial-gradient(rgba(217, 184, 143, 0.08) 1px, transparent 0);
+  background-image: radial-gradient(rgba(16, 42, 51, 0.06) 1px, transparent 0);
   background-size: 24px 24px;
+}
+
+/* Vintage highway marquee ticker */
+@keyframes highway-marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-highway-marquee {
+  display: flex;
+  width: max-content;
+  animation: highway-marquee 34s linear infinite;
+}
+
+.animate-highway-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Dashed asphalt road centerline flow */
+@keyframes road-dash-flow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 48px;
+  }
+}
+
+.highway-centerline-vertical {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    #FACC15 0px,
+    #FACC15 16px,
+    transparent 16px,
+    transparent 34px
+  );
+  background-size: 4px 34px;
+}
+
+/* Postcard perforated stamp silhouette */
+.stamp-perforated {
+  background-image: radial-gradient(circle at 0 50%, transparent 4px, currentColor 4.5px);
+}
+
+/* Tactile stamp ink slam */
+@keyframes stamp-pop {
+  0% {
+    transform: scale(1.6) rotate(-14deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(0.92) rotate(-6deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(-8deg);
+    opacity: 1;
+  }
+}
+
+.animate-stamp-pop {
+  animation: stamp-pop 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 /* Reduced motion preference */
@@ -36,5 +105,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .animate-highway-marquee {
+    animation: none !important;
   }
 }

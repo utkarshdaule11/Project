@@ -1,21 +1,28 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Inter } from "next/font/google";
+import { Fraunces, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const displaySerif = Fraunces({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
+  axes: ["SOFT", "WONK", "opsz"],
 });
 
-const inter = Inter({
+const travelSans = Plus_Jakarta_Sans({
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
 });
 
+const instrumentMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const viewport: Viewport = {
-  themeColor: "#091522",
+  themeColor: "#FBF7EE",
   width: "device-width",
   initialScale: 1,
 };
@@ -27,7 +34,7 @@ export const metadata: Metadata = {
     template: "%s | The Grand Bharat Highway",
   },
   description:
-    "An interactive, cinematic road expedition across India's premier 3,810 KM national corridor (NH44) from Srinagar in the Himalaya down to Kanyakumari.",
+    "An interactive, joyful road-trip expedition across India's iconic 3,810 KM national corridor (NH44) from Srinagar in the Himalaya down to Kanyakumari.",
   keywords: [
     "India Road Trip",
     "Grand Bharat Highway",
@@ -42,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Grand Bharat Highway | Kashmir to Kanyakumari (NH44)",
     description:
-      "An interactive, cinematic road expedition across India's premier 3,810 KM national corridor (NH44) from Srinagar down to Kanyakumari.",
+      "An interactive, joyful road-trip expedition across India's iconic 3,810 KM national corridor (NH44) from Srinagar in the Himalaya down to Kanyakumari.",
     url: "https://grand-bharat-highway.vercel.app",
     siteName: "The Grand Bharat Highway",
     images: [
@@ -60,7 +67,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Grand Bharat Highway | Kashmir to Kanyakumari (NH44)",
     description:
-      "An interactive, cinematic road expedition across India's premier 3,810 KM national corridor (NH44) from Srinagar down to Kanyakumari.",
+      "An interactive, joyful road-trip expedition across India's iconic 3,810 KM national corridor (NH44) from Srinagar in the Himalaya down to Kanyakumari.",
     images: ["https://images.unsplash.com/photo-1506015391300-4802dc74de2e?auto=format&fit=crop&w=1200&q=85"],
   },
   icons: {
@@ -74,8 +81,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${playfair.variable} ${inter.variable}`}>
-      <body className="min-h-screen bg-[#091522] font-sans text-[#F2EBDD] antialiased">
+    <html
+      lang="en"
+      className={`${displaySerif.variable} ${travelSans.variable} ${instrumentMono.variable}`}
+    >
+      <body className="min-h-screen bg-[#FBF7EE] font-sans text-[#102A33] antialiased">
         <div id="main-content">
           {children}
         </div>
